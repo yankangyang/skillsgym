@@ -1,0 +1,19 @@
+{
+  "math": {
+    "dimensions": ["accuracy", "speed", "sanity_check"],
+    "benchmark_seconds_per_problem": 30
+  },
+  "structuring": {
+    "dimensions": ["mece", "case_specificity", "coverage", "prioritization"],
+    "time_limit_seconds": 90
+  },
+  "sizing": {
+    "dimensions": ["decomposition", "assumptions", "math", "sanity_check"],
+    "time_limit_seconds": 180
+  },
+  "behavioral": {
+    "dimensions": ["star_structure", "specificity", "signal_strength", "length_control"],
+    "time_limit_seconds": 120
+  }
+}
+

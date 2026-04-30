@@ -1,0 +1,22 @@
+{
+  "vertical": "consulting",
+  "firm": "mckinsey",
+  "themes": ["personal_impact", "leadership", "entrepreneurial_drive"],
+  "rapid_fire_prompts": [
+    {
+      "theme": "personal_impact",
+      "prompt": "Tell me about a time you changed the mind of a skeptical stakeholder.",
+      "time_limit_seconds": 90
+    },
+    {
+      "theme": "leadership",
+      "prompt": "Tell me about a time you led a team through ambiguity.",
+      "time_limit_seconds": 90
+    },
+    {
+      "theme": "entrepreneurial_drive",
+      "prompt": "Tell me about a time you pushed beyond your formal role to create impact.",
+      "time_limit_seconds": 90
+    }
+  ]
+}

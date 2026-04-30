@@ -1,0 +1,17 @@
+{
+  "vertical": "consulting",
+  "format_checks": ["one_page", "standard_sections", "no_graphics", "dates_consistent"],
+  "bullet_scoring": [
+    "action_verbs",
+    "quantified_impact",
+    "individual_attribution",
+    "trait_balance"
+  ],
+  "consulting_specific": [
+    "brand_clarity",
+    "story_readiness",
+    "firm_tailoring"
+  ],
+  "firms": ["mckinsey", "bcg", "bain", "deloitte", "kearney"]
+}
+
