@@ -56,16 +56,29 @@ _Add items here as they come up_
 - No decision yet — looking for references (dark SaaS dashboard, EdTech app)
 - Good sources: Dribbble "SaaS dashboard dark", Mobbin for UI patterns, drop screenshots in chat
 
+### App name (undecided)
+Candidates discussed:
+- **Tier1** — bold, two syllables, signals aspiration (top pick)
+- **CaseForge** — craft/building energy, premium feel
+- **Casewell** — clean, "do it well" connotation
+- **FirstRound** — the hurdle everyone wants to clear
+- **CaseGym** — closer to current PrepGym, more specific
+- **MBBReady** — descriptive, zero ambiguity
+
+No decision yet. Check domain availability before committing.
+
 ---
 
 ## Pending / Next session
+- [ ] Decide on app name + check domain availability
+- [ ] Set up Supabase Auth (Google OAuth recommended) — unlocks everything below
+- [ ] Connect onboarding form → write real user to Supabase
 - [ ] Wire remaining pages to Supabase (dashboard, progress, diagnostic results)
-- [ ] Seed leaderboard with fake users so the view isn't empty
-- [ ] Seed starter stories for test user
-- [ ] Set up Supabase Auth (magic link or Google OAuth)
+- [ ] Resume scorer — Claude API in app/api/resume/route.ts (replaces Fastify, main lead magnet)
+- [ ] Seed leaderboard with fake cohort entries so view isn't empty
+- [ ] Seed starter story themes for new users
 - [ ] Uncomment RLS policies once auth is live
-- [ ] Build Next.js API routes to replace Fastify (resume scoring, diagnostic scoring)
-- [ ] Vercel deploy setup
+- [ ] Vercel deploy (after auth is wired, ~15 min)
 - [ ] Design direction decision — find reference screenshots
 
 ---
