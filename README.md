@@ -1,6 +1,6 @@
-# Consulting Prep Gym
+# SkillsGym — Consulting Prep Gym
 
-Consulting Prep Gym is a full-funnel interview prep platform that starts before the case interview. The launch wedge combines a resume screen, a diagnostic, behavioral prep, and targeted drills so candidates know where they will fail before they burn money on coaching.
+Full-funnel consulting interview prep. Starts with a resume screen and diagnostic, not a practice case.
 
 ## Phase 1
 
@@ -10,23 +10,41 @@ Consulting Prep Gym is a full-funnel interview prep platform that starts before 
 
 ## Stack
 
-- Next.js with the App Router
-- TypeScript
-- JSON content libraries for drill and rubric scaffolding
+- **Next.js 16** — App Router, TypeScript
+- **Tailwind CSS v4** + **shadcn/ui** — UI components
+- **Supabase** — database, auth, storage
+- React 19
 
 ## Project Structure
 
-- `app/`: frontend routes and global styling
-- `content/`: vertical-specific rubrics and content seeds
-- `docs/`: product brief and implementation notes
-- `src/lib/domain/`: typed product and schema definitions
+- `app/` — Next.js routes and global styles
+- `src/components/` — shared React components
+- `src/lib/domain/` — typed schemas (UserProfile, DrillQuestion, etc.)
+- `components/ui/` — shadcn/ui components
+- `content/` — vertical-specific rubrics and content seeds
+- `docs/` — product brief and implementation notes
+- `wireframes/` — static HTML prototypes (reference only)
 
-## Next Steps
+## Setup
 
-1. Install dependencies with `npm install`.
-2. Run the app with `npm run dev`.
-3. Start implementing the Phase 1 flows:
-   - resume upload and scoring
-   - diagnostic runner
-   - paid drill surfaces
+```bash
+npm install
+# Fill in .env.local:
+# NEXT_PUBLIC_SUPABASE_URL=...
+# NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=...
+npm run dev
+```
 
+## Adding shadcn/ui Components
+
+```bash
+npx shadcn@latest add button
+npx shadcn@latest add card
+```
+
+## Verticals
+
+- Consulting (live)
+- Private Equity — coming 2026
+- MMI Medical — coming 2026
+- VC — coming 2026

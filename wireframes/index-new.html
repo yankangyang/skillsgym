@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Diagnose first.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #08091a;
+      --surf:     #0e1228;
+      --surf2:    #141830;
+      --line:     #1d2540;
+      --line2:    #2b3660;
+      --text:     #e6eaf8;
+      --text2:    #7d8db8;
+      --text3:    #4a5680;
+      --blue:     #2563eb;
+      --blue-h:   #1d4ed8;
+      --blue-lt:  #60a5fa;
+      --green:    #10b981;
+      --green-lt: #34d399;
+      --red:      #f43f5e;
+      --red-lt:   #fb7185;
+      --gold:     #f59e0b;
+    }
+
+    html { background: var(--bg); }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    .nav {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+    .logo em {
+      font-style: normal;
+      color: var(--blue-lt);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text3);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .btn-ghost {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text2);
+      border-radius: 8px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .btn-ghost:hover { color: var(--text); }
+    .btn-primary {
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--blue);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-primary:hover { background: var(--blue-h); }
+    .btn-outline {
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text2);
+      background: transparent;
+      border: 1px solid var(--line2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue-lt); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 80px 40px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .hero-copy { display: flex; flex-direction: column; gap: 0; }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-lt);
+      margin-bottom: 20px;
+    }
+
+    .hero-h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 22px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--blue-lt);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text2);
+      line-height: 1.65;
+      max-width: 38ch;
+      margin-bottom: 36px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn-hero {
+      padding: 13px 26px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 10px;
+    }
+
+    .hero-note {
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    /* ── DIAGNOSTIC CARD ── */
+    .diag-card {
+      background: var(--surf);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+    }
+
+    .diag-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .diag-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text3);
+    }
+    .diag-date {
+      font-size: 11px;
+      color: var(--text3);
+    }
+
+    .diag-score-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+
+    /* Score ring — CSS conic gradient donut */
+    .score-ring-wrap {
+      position: relative;
+      width: 108px;
+      height: 108px;
+      flex-shrink: 0;
+    }
+    .score-ring {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--blue) 0deg 173deg,
+        rgba(255,255,255,0.06) 173deg 360deg
+      );
+    }
+    .score-ring-inner {
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      background: var(--surf);
+      display: grid;
+      place-items: center;
+    }
+    .score-number {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--text);
+    }
+    .score-denom {
+      font-size: 11px;
+      color: var(--text3);
+      text-align: center;
+    }
+
+    .score-right {}
+    .score-label {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .score-target {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 8px;
+    }
+    .score-gap {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      background: rgba(244,63,94,0.12);
+      border: 1px solid rgba(244,63,94,0.28);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--red-lt);
+    }
+
+    /* Skill bars */
+    .skill-grid {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .skill-row {
+      display: grid;
+      grid-template-columns: 100px 1fr 36px;
+      align-items: center;
+      gap: 12px;
+    }
+    .skill-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text2);
+    }
+    .skill-row.is-weak .skill-name {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .skill-bar-track {
+      height: 6px;
+      background: var(--surf2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--line2);
+      transition: width 0.3s ease;
+    }
+    .skill-bar-fill.strong  { background: var(--blue); }
+    .skill-bar-fill.mid     { background: rgba(96,165,250,0.65); }
+    .skill-bar-fill.is-weak { background: var(--red); }
+    .skill-val {
+      font-size: 13px;
+      font-weight: 700;
+      text-align: right;
+      color: var(--text3);
+    }
+    .skill-row.is-weak .skill-val { color: var(--red-lt); }
+
+    /* Weak skill tag */
+    .weak-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red-lt);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+    .weak-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Priority CTA inside card */
+    .diag-bottom {
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .diag-priority-label {
+      font-size: 11px;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3px;
+    }
+    .diag-priority-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .btn-start {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-start:hover { background: var(--blue-h); }
+
+    /* ── TRUST ── */
+    .trust {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--text3);
+    }
+    .trust-label {
+      font-weight: 600;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+    }
+    .trust-school {
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CONTRAST LINE ── */
+    .contrast-strip {
+      max-width: 900px;
+      margin: 72px auto;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .contrast-q {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--text2);
+      letter-spacing: -0.02em;
+    }
+    .contrast-q strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* ── 5-STEP FUNNEL ── */
+    .funnel {
+      max-width: 1160px;
+      margin: 0 auto 80px;
+      padding: 0 40px;
+    }
+    .funnel-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 32px;
+    }
+    .funnel-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .funnel-step {
+      padding: 28px 24px;
+      border-right: 1px solid var(--line);
+      position: relative;
+    }
+    .funnel-step:last-child { border-right: none; }
+    .funnel-step.active {
+      background: rgba(37,99,235,0.07);
+    }
+    .funnel-num {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--text3);
+      margin-bottom: 14px;
+    }
+    .funnel-step.active .funnel-num { color: var(--blue-lt); }
+    .funnel-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .funnel-desc {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+    .funnel-tier {
+      margin-top: 16px;
+      display: inline-flex;
+      padding: 3px 9px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .tier-free    { background: rgba(16,185,129,0.1); color: var(--green-lt); }
+    .tier-sprint  { background: rgba(37,99,235,0.1);  color: var(--blue-lt); }
+    .tier-full    { background: rgba(255,255,255,0.06); color: var(--text3); }
+
+    /* Active step indicator line */
+    .funnel-step.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+    }
+
+    /* ── STAT BAR ── */
+    .stat-bar {
+      max-width: 1160px;
+      margin: 0 auto 80px;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .stat-item {
+      background: var(--surf);
+      padding: 32px 28px;
+    }
+    .stat-val {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .stat-val em {
+      font-style: italic;
+      color: var(--blue-lt);
+    }
+    .stat-desc {
+      font-size: 13px;
+      color: var(--text3);
+      max-width: 24ch;
+      line-height: 1.5;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 40px;
+    }
+    .pricing-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 32px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .price-card {
+      background: var(--surf);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .price-card.featured {
+      background: rgba(37,99,235,0.06);
+      position: relative;
+    }
+    .price-card.featured::before {
+      content: 'Most popular';
+      position: absolute;
+      top: 16px; right: 16px;
+      padding: 3px 9px;
+      background: rgba(37,99,235,0.2);
+      border: 1px solid rgba(37,99,235,0.4);
+      border-radius: 5px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--blue-lt);
+      text-transform: uppercase;
+    }
+    .price-tier {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 14px;
+    }
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .price-period {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 24px;
+    }
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .price-features li {
+      font-size: 13px;
+      color: var(--text2);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .price-features li::before {
+      content: '✓';
+      color: var(--green-lt);
+      font-weight: 800;
+      font-size: 11px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .price-cta {
+      display: block;
+      text-align: center;
+      padding: 11px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.15s;
+    }
+    .price-cta.solid { background: var(--blue); color: #fff; }
+    .price-cta.solid:hover { background: var(--blue-h); }
+    .price-cta.outline {
+      border: 1px solid var(--line2);
+      color: var(--text2);
+    }
+    .price-cta.outline:hover { border-color: var(--blue); color: var(--blue-lt); }
+    .price-cta.dim {
+      border: 1px solid var(--line);
+      color: var(--text3);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* ── VERTICALS PILLS ── */
+    .verticals {
+      max-width: 1160px;
+      margin: 0 auto 72px;
+      padding: 0 40px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .vert-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-right: 4px;
+    }
+    .vert-pill {
+      padding: 5px 13px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .vert-live  { background: rgba(16,185,129,0.1); color: var(--green-lt); border: 1px solid rgba(16,185,129,0.2); }
+    .vert-soon  { background: rgba(255,255,255,0.04); color: var(--text3); border: 1px solid var(--line); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .foot-logo { font-size: 15px; font-weight: 800; letter-spacing: -0.04em; }
+    .foot-logo em { font-style: normal; color: var(--blue-lt); }
+    .foot-links { display: flex; gap: 20px; }
+    .foot-links a { font-size: 12px; color: var(--text3); }
+    .foot-links a:hover { color: var(--text2); }
+    .foot-copy { font-size: 12px; color: var(--text3); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index-new.html" class="logo">Prep<em>Gym</em></a>
+  <div class="nav-links">
+    <a href="#funnel">How it works</a>
+    <a href="#pricing">Pricing</a>
+  </div>
+  <div class="nav-actions">
+    <a href="dashboard.html" class="btn-ghost">Sign in</a>
+    <a href="resume.html" class="btn-primary">Get started free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- Left copy -->
+  <div class="hero-copy">
+    <p class="eyebrow">Consulting Interview Prep</p>
+    <h1 class="hero-h1">
+      Find the gap.<br>
+      <em>Fix that.</em>
+    </h1>
+    <p class="hero-sub">
+      Every other platform starts you at a full case.
+      That's scrimmaging without drills. We find where
+      you'd actually fail — then drill that skill.
+    </p>
+    <div class="hero-ctas">
+      <a href="diagnostic.html" class="btn-primary btn-hero">Run the diagnostic →</a>
+      <a href="resume.html"     class="btn-outline btn-hero">Screen my resume</a>
+    </div>
+    <p class="hero-note">Free to start · No credit card</p>
+  </div>
+
+  <!-- Right: Diagnostic card -->
+  <div class="diag-card">
+    <div class="diag-topbar">
+      <span class="diag-title">Readiness Assessment</span>
+      <span class="diag-date">10 min · Today</span>
+    </div>
+
+    <!-- Score ring + context -->
+    <div class="diag-score-row">
+      <div class="score-ring-wrap">
+        <div class="score-ring"></div>
+        <div class="score-ring-inner">
+          <div>
+            <div class="score-number">48</div>
+            <div class="score-denom">/ 100</div>
+          </div>
+        </div>
+      </div>
+      <div class="score-right">
+        <div class="score-label">Below target</div>
+        <div class="score-target">MBB threshold: 75+</div>
+        <span class="score-gap">↑ 27 points to close</span>
+      </div>
+    </div>
+
+    <!-- Skill bars -->
+    <div class="skill-grid">
+      <div class="skill-row">
+        <span class="skill-name">Math</span>
+        <div class="skill-bar-track"><div class="skill-bar-fill strong" style="width:78%"></div></div>
+        <span class="skill-val">3.9</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name">Structuring</span>
+        <div class="skill-bar-track"><div class="skill-bar-fill mid" style="width:62%"></div></div>
+        <span class="skill-val">3.1</span>
+      </div>
+      <div class="skill-row is-weak">
+        <span class="skill-name">
+          Behavioral
+          <span class="weak-tag" style="display:inline-flex;margin-left:8px;">
+            <span class="weak-dot"></span> weakest
+          </span>
+        </span>
+        <div class="skill-bar-track"><div class="skill-bar-fill is-weak" style="width:32%"></div></div>
+        <span class="skill-val">1.6</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name">Market Sizing</span>
+        <div class="skill-bar-track"><div class="skill-bar-fill mid" style="width:70%"></div></div>
+        <span class="skill-val">3.5</span>
+      </div>
+    </div>
+
+    <!-- Priority CTA -->
+    <div class="diag-bottom">
+      <div>
+        <div class="diag-priority-label">Priority fix</div>
+        <div class="diag-priority-name">Behavioral prep — McKinsey PEI</div>
+      </div>
+      <a href="behavioral.html" class="btn-start">Start →</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <span class="trust-label">Used at</span>
+  <span class="trust-school">Wharton</span>
+  <span class="trust-school">HBS</span>
+  <span class="trust-school">Booth</span>
+  <span class="trust-school">Stanford GSB</span>
+  <span class="trust-school">Kellogg</span>
+  <span class="trust-school">Sloan</span>
+  <span class="trust-school">Columbia</span>
+</div>
+
+<!-- CONTRAST LINE -->
+<div class="contrast-strip">
+  <p class="contrast-q">
+    Every other platform starts you at a full case.<br>
+    <strong>We start where you'd actually fail.</strong>
+  </p>
+</div>
+
+<!-- STATS -->
+<div class="stat-bar">
+  <div class="stat-item">
+    <div class="stat-val"><em>12</em> min</div>
+    <p class="stat-desc">Average time to finding a weakness candidates didn't know they had</p>
+  </div>
+  <div class="stat-item">
+    <div class="stat-val"><em>+18</em>%</div>
+    <p class="stat-desc">Average readiness score improvement after one focused week</p>
+  </div>
+  <div class="stat-item">
+    <div class="stat-val"><em>4</em> skills</div>
+    <p class="stat-desc">Math, structuring, behavioral, market sizing — scored and ranked</p>
+  </div>
+</div>
+
+<!-- 5-STEP FUNNEL -->
+<section id="funnel" class="funnel">
+  <p class="funnel-label">The full funnel nobody else has</p>
+  <div class="funnel-steps">
+    <div class="funnel-step">
+      <p class="funnel-num">01</p>
+      <p class="funnel-name">Resume Screen</p>
+      <p class="funnel-desc">MBB rubric. See what gets you filtered before you submit.</p>
+      <span class="funnel-tier tier-free">Free</span>
+    </div>
+    <div class="funnel-step">
+      <p class="funnel-num">02</p>
+      <p class="funnel-name">Diagnostic</p>
+      <p class="funnel-desc">10 minutes. Four skills. One clear priority.</p>
+      <span class="funnel-tier tier-free">Free</span>
+    </div>
+    <div class="funnel-step active">
+      <p class="funnel-num">03</p>
+      <p class="funnel-name">Skill Drills</p>
+      <p class="funnel-desc">Target what's weak. Not the whole thing.</p>
+      <span class="funnel-tier tier-sprint">Sprint</span>
+    </div>
+    <div class="funnel-step">
+      <p class="funnel-num">04</p>
+      <p class="funnel-name">Behavioral</p>
+      <p class="funnel-desc">PEI, STAR stories, rapid-fire fit.</p>
+      <span class="funnel-tier tier-sprint">Sprint</span>
+    </div>
+    <div class="funnel-step">
+      <p class="funnel-num">05</p>
+      <p class="funnel-name">Case Sim</p>
+      <p class="funnel-desc">Full case simulation. Now you're ready.</p>
+      <span class="funnel-tier tier-full">Full Prep</span>
+    </div>
+  </div>
+</section>
+
+<!-- VERTICALS -->
+<div class="verticals">
+  <span class="vert-label">Verticals</span>
+  <span class="vert-pill vert-live">Consulting</span>
+  <span class="vert-pill vert-soon">Private Equity — 2026</span>
+  <span class="vert-pill vert-soon">MMI Medical — 2026</span>
+  <span class="vert-pill vert-soon">VC — 2026</span>
+</div>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <p class="pricing-label">Pricing</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <p class="price-tier">Free</p>
+      <p class="price-amount">$0</p>
+      <p class="price-period">No card required</p>
+      <ul class="price-features">
+        <li>Full resume screen</li>
+        <li>Full diagnostic</li>
+        <li>3 drill sessions</li>
+        <li>Radar chart + priority fix</li>
+      </ul>
+      <a href="resume.html" class="price-cta outline">Start free</a>
+    </div>
+    <div class="price-card featured">
+      <p class="price-tier">Sprint</p>
+      <p class="price-amount">$99</p>
+      <p class="price-period">8 weeks · one-time</p>
+      <ul class="price-features">
+        <li>Everything in Free</li>
+        <li>Unlimited drills — 100+ problems</li>
+        <li>Behavioral rapid-fire</li>
+        <li>STAR story bank builder</li>
+        <li>Leaderboard + streaks</li>
+      </ul>
+      <a href="dashboard.html" class="price-cta solid">Start Sprint — $99</a>
+    </div>
+    <div class="price-card">
+      <p class="price-tier">Full Prep</p>
+      <p class="price-amount">$149</p>
+      <p class="price-period">12 weeks · includes case sim</p>
+      <ul class="price-features">
+        <li>Everything in Sprint</li>
+        <li>AI case simulations</li>
+        <li>Firm-specific modes</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="#" class="price-cta dim">Coming soon</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index-new.html" class="foot-logo">Prep<em>Gym</em></a>
+  <div class="foot-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+  </div>
+  <p class="foot-copy">© 2026 · Consulting · PE · MMI · VC</p>
+</footer>
+
+</body>
+</html>

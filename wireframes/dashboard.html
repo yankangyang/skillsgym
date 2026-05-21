@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index.html" class="logo">Prep<span>Gym</span></a>
+    <a href="dashboard.html" class="nav-link active">Dashboard</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+    <a href="drills.html" class="nav-link">Drills</a>
+    <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+  </div>
+  <div class="nav-right">
+    <a href="story-bank.html" class="btn btn-ghost btn-sm">Story Bank</a>
+    <div style="font-size:13px;color:var(--text2);font-weight:500;">Alex K.</div>
+    <div class="avatar">AK</div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1>Good morning, Alex 👋</h1>
+      <p class="mt-4">McKinsey BA application · Aug 11, 2026 · <strong style="color:var(--yellow-light);">104 days left</strong></p>
+    </div>
+    <a href="diagnostic.html" class="btn btn-secondary">Retake Diagnostic</a>
+  </div>
+
+  <!-- Priority alert -->
+  <div class="alert alert-red mb-24">
+    <span class="alert-icon">⚠️</span>
+    <div>
+      <strong style="color:var(--red-light);">Behavioral is your critical weakness — 1.2 / 5.0</strong>
+      <p class="text-sm mt-4" style="color:var(--text2);">MBB interviews are ~50% fit. You're currently failing half the interview before the case starts. <a href="behavioral.html" style="color:var(--accent-light);text-decoration:underline;">Start behavioral drills →</a></p>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="grid-4 mb-32">
+    <div class="card stat-card text-center">
+      <!-- Readiness circle -->
+      <div style="display:flex;justify-content:center;margin-bottom:8px;">
+        <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;">
+          <svg width="88" height="88" viewBox="0 0 88 88">
+            <circle cx="44" cy="44" r="36" fill="none" stroke="var(--surface2)" stroke-width="7"/>
+            <circle cx="44" cy="44" r="36" fill="none" stroke="var(--accent)" stroke-width="7"
+              stroke-dasharray="226" stroke-dashoffset="75"
+              stroke-linecap="round" transform="rotate(-90 44 44)"/>
+          </svg>
+          <div style="position:absolute;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;letter-spacing:-0.04em;line-height:1;">67</div>
+            <div style="font-size:10px;color:var(--text3);font-weight:600;">/100</div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-label">Readiness Score</div>
+    </div>
+    <div class="card stat-card text-center">
+      <div class="stat-value" style="color:var(--yellow-light);">🔥 14</div>
+      <div class="stat-label">Day Streak</div>
+      <div class="text-xs mt-4" style="color:var(--text3);">Best: 22 days</div>
+    </div>
+    <div class="card stat-card text-center">
+      <div class="stat-value">142</div>
+      <div class="stat-label">Drills Completed</div>
+      <div class="text-xs mt-4" style="color:var(--green-light);">↑ 12 this week</div>
+    </div>
+    <div class="card stat-card text-center">
+      <div class="stat-value" style="color:var(--accent-light);">#12</div>
+      <div class="stat-label">Wharton Rank</div>
+      <div class="text-xs mt-4" style="color:var(--text3);">Top 18% nationally</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap:24px;">
+
+    <!-- Skill breakdown -->
+    <div class="card">
+      <div class="flex justify-between items-center mb-24">
+        <h3>Skill Breakdown</h3>
+        <a href="results.html" class="btn btn-ghost btn-sm">Full Results →</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="skill-row">
+          <div class="skill-name">Math</div>
+          <div class="skill-bar-wrap"><div class="progress-fill green" style="width:60%;"></div></div>
+          <div class="skill-score text-green">3.0</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Structuring</div>
+          <div class="skill-bar-wrap"><div class="progress-fill yellow" style="width:42%;"></div></div>
+          <div class="skill-score text-yellow">2.1</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Sizing</div>
+          <div class="skill-bar-wrap"><div class="progress-fill green" style="width:76%;"></div></div>
+          <div class="skill-score text-green">3.8</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Behavioral</div>
+          <div class="skill-bar-wrap"><div class="progress-fill red" style="width:24%;"></div></div>
+          <div class="skill-score text-red">1.2</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Charts</div>
+          <div class="skill-bar-wrap"><div class="progress-fill yellow" style="width:56%;"></div></div>
+          <div class="skill-score text-yellow">2.8</div>
+        </div>
+      </div>
+      <hr>
+      <div class="flex gap-8 flex-wrap mt-4">
+        <span class="badge badge-red">Fix First: Behavioral</span>
+        <span class="badge badge-yellow">Then: Structuring</span>
+        <span class="badge badge-yellow">Then: Charts</span>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Quick actions -->
+      <div class="card">
+        <h3 class="mb-16">Pick up where you left off</h3>
+        <div style="display:flex;flex-direction:column;gap-8px;gap:8px;">
+          <a href="behavioral.html" class="btn btn-primary btn-full" style="justify-content:space-between;padding:14px 18px;">
+            <span>🗣️ Behavioral Drill — McKinsey PEI</span>
+            <span class="badge badge-red" style="margin-left:8px;">Weakest</span>
+          </a>
+          <a href="math-drill.html" class="btn btn-secondary btn-full" style="justify-content:space-between;padding:14px 18px;">
+            <span>⚡ Mental Math · Problem 13/30</span>
+            <span class="text-muted text-xs">Resume: 6 correct streak</span>
+          </a>
+          <a href="drills.html" class="btn btn-ghost btn-full" style="justify-content:space-between;padding:14px 18px;">
+            <span>📂 Browse all drills</span>
+            <span class="text-muted text-xs">5 categories available</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Weekly challenge -->
+      <div class="card" style="border-color:rgba(245,158,11,0.35);background:rgba(245,158,11,0.04);">
+        <div class="flex justify-between items-center mb-12">
+          <div>
+            <span class="badge badge-yellow mb-8" style="display:inline-flex;">🏆 Weekly Challenge</span>
+            <h3 class="mt-8">Size the US EV charging market</h3>
+          </div>
+          <div class="text-center">
+            <div style="font-size:1.1rem;font-weight:800;color:var(--yellow-light);">2d 14h</div>
+            <div class="stat-label">Remaining</div>
+          </div>
+        </div>
+        <div class="flex gap-16 mb-16">
+          <div><div style="font-size:1.1rem;font-weight:700;color:var(--text);">847</div><div class="text-xs text-muted">Attempts</div></div>
+          <div><div style="font-size:1.1rem;font-weight:700;color:var(--green-light);">3:12</div><div class="text-xs text-muted">Current leader</div></div>
+          <div><div style="font-size:1.1rem;font-weight:700;color:var(--text);">#23</div><div class="text-xs text-muted">Your rank</div></div>
+        </div>
+        <a href="leaderboard.html" class="btn btn-secondary btn-sm">View Challenge →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Recent drills -->
+  <div class="mt-32">
+    <div class="flex justify-between items-center mb-16">
+      <h3>Recent Drills</h3>
+      <a href="drills.html" class="btn btn-ghost btn-sm">View All</a>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Drill</th>
+            <th>Category</th>
+            <th>Result</th>
+            <th>Time</th>
+            <th>When</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Break-even: new product launch</td>
+            <td><span class="badge badge-gray">Math</span></td>
+            <td><span class="badge badge-green">✓ Correct</span></td>
+            <td>0:24</td>
+            <td class="text-muted">2 hours ago</td>
+          </tr>
+          <tr>
+            <td>Profit decline: hotel chain</td>
+            <td><span class="badge badge-accent">Structuring</span></td>
+            <td><span class="badge badge-yellow">Partial</span></td>
+            <td>1:47</td>
+            <td class="text-muted">2 hours ago</td>
+          </tr>
+          <tr>
+            <td>Size: US coffee market</td>
+            <td><span class="badge badge-gray">Sizing</span></td>
+            <td><span class="badge badge-green">✓ Correct</span></td>
+            <td>3:12</td>
+            <td class="text-muted">Yesterday</td>
+          </tr>
+          <tr>
+            <td>PEI Leadership: team through ambiguity</td>
+            <td><span class="badge badge-red">Behavioral</span></td>
+            <td><span class="badge badge-red">Needs work</span></td>
+            <td>1:08</td>
+            <td class="text-muted">Yesterday</td>
+          </tr>
+          <tr>
+            <td>Chart: revenue vs. margin scatter</td>
+            <td><span class="badge badge-gray">Charts</span></td>
+            <td><span class="badge badge-green">✓ Correct</span></td>
+            <td>0:55</td>
+            <td class="text-muted">2 days ago</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

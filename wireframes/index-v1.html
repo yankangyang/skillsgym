@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Train your gap.</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --bg: #080c18;
+      --surface: #0f1628;
+      --surface2: #162035;
+      --border: #1e2d4a;
+      --border2: #2a3f6b;
+      --text: #dde4f5;
+      --text2: #8a9bca;
+      --text3: #5a6b99;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #60a5fa;
+    }
+
+    /* ── HERO SPLIT ── */
+    .hero-split {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 88px 32px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-copy {}
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 13px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(37,99,235,0.12);
+      border: 1px solid rgba(37,99,235,0.32);
+      color: var(--accent-light);
+      margin-bottom: 22px;
+    }
+    .v1-hero-title {
+      font-size: 3.4rem;
+      font-weight: 900;
+      letter-spacing: -0.055em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .v1-hero-title .cycle-word {
+      color: var(--accent-light);
+      display: inline-block;
+      min-width: 200px;
+    }
+    .hero-sub-v1 {
+      font-size: 1.05rem;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* ── DIAGNOSTIC CARD (right side) ── */
+    .diag-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .diag-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+    .diag-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text3);
+    }
+    .diag-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-light);
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.28);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .diag-skill-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .diag-skill-name {
+      width: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .diag-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .diag-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--accent);
+    }
+    .diag-bar-fill.red { background: var(--red); }
+    .diag-score {
+      width: 32px;
+      text-align: right;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .diag-score.red { color: var(--red-light); }
+    .diag-score.blue { color: var(--accent-light); }
+    .diag-weakest-label {
+      font-size: 11px;
+      color: var(--red-light);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .diag-next-cta {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.28);
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+    .diag-next-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text3);
+    }
+    .diag-next-action {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+
+    /* ── TRUST BAR ── */
+    .v1-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text3);
+      padding: 14px 32px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 72px;
+    }
+    .v1-trust strong { color: var(--text2); font-weight: 500; }
+
+    /* ── CONTRAST SECTION ── */
+    .contrast-section {
+      max-width: 860px;
+      margin: 0 auto 72px;
+      padding: 0 32px;
+    }
+    .contrast-eyebrow {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text3);
+      margin-bottom: 28px;
+    }
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .contrast-col {
+      padding: 28px 32px;
+    }
+    .contrast-col-left {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+    }
+    .contrast-col-right {
+      background: rgba(37,99,235,0.04);
+    }
+    .contrast-col-header {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .contrast-col-left .contrast-col-header { color: var(--text3); }
+    .contrast-col-right .contrast-col-header { color: var(--accent-light); }
+    .contrast-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 13px;
+      font-size: 13px;
+    }
+    .contrast-item:last-child { margin-bottom: 0; }
+    .contrast-icon-x { color: var(--text3); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .contrast-icon-check { color: var(--green-light); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .contrast-col-left .contrast-item span { color: var(--text3); }
+    .contrast-col-right .contrast-item span { color: var(--text); }
+
+    /* ── INSIGHT BAR ── */
+    .insight-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 44px 32px;
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .insight-number {
+      font-size: 4.5rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: var(--accent-light);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .insight-sub {
+      font-size: 1rem;
+      color: var(--text2);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* ── FUNNEL ── */
+    .funnel-section {
+      max-width: 1100px;
+      margin: 0 auto 72px;
+      padding: 0 32px;
+    }
+    .funnel-section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .funnel-section-header h2 {
+      margin-bottom: 8px;
+    }
+    .funnel-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      position: relative;
+    }
+    .funnel-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+    }
+    .funnel-step.highlight {
+      border-color: var(--accent);
+      background: rgba(37,99,235,0.05);
+    }
+    .funnel-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text3);
+    }
+    .funnel-step.highlight .funnel-step-num { color: var(--accent-light); }
+    .funnel-step-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .funnel-step-desc {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+    .funnel-step-badge {
+      margin-top: auto;
+      padding-top: 10px;
+    }
+    .funnel-connector {
+      position: absolute;
+      top: 50%;
+      right: -7px;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      z-index: 2;
+      color: var(--border2);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      max-width: 900px;
+      margin: 0 auto 72px;
+      padding: 0 32px;
+    }
+    .pricing-section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .pricing-section-header h2 { margin-bottom: 8px; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .v1-pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .v1-pricing-card.featured {
+      border-color: var(--accent);
+      background: rgba(37,99,235,0.04);
+    }
+    .v1-pricing-card.dim { opacity: 0.6; }
+    .v1-price {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin: 8px 0 3px;
+      color: var(--text);
+    }
+    .v1-price-period {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 20px;
+    }
+    .v1-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+    .v1-feature-list li {
+      font-size: 13px;
+      color: var(--text2);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .v1-feature-list li::before {
+      content: '✓';
+      color: var(--green-light);
+      font-weight: 800;
+      font-size: 11px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── VERTICALS ── */
+    .verticals-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 72px;
+    }
+
+    /* ── FOOTER ── */
+    .v1-footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index-v1.html" class="logo">Prep<span>Gym</span></a>
+    <a href="#funnel" class="nav-link">How it works</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+  </div>
+  <div class="nav-right">
+    <a href="dashboard.html" class="btn btn-ghost btn-sm">Sign In</a>
+    <a href="resume.html" class="btn btn-primary btn-sm">Get Started Free</a>
+  </div>
+</nav>
+
+<!-- HERO SPLIT -->
+<section class="hero-split">
+
+  <!-- LEFT: Copy -->
+  <div class="hero-copy">
+    <div class="hero-eyebrow">Beta · 2,400+ resume screens completed</div>
+    <h1 class="v1-hero-title">
+      Train your<br>
+      <span class="cycle-word" id="cycle">behavioral</span> gap.
+    </h1>
+    <p class="hero-sub-v1">Every other platform starts you at a full case. PrepGym starts you at your weakest skill.</p>
+    <div class="hero-ctas">
+      <a href="resume.html" class="btn btn-primary btn-lg">Get Started Free →</a>
+      <a href="diagnostic.html" class="btn btn-ghost btn-sm">See how it works</a>
+    </div>
+  </div>
+
+  <!-- RIGHT: Fake diagnostic result card -->
+  <div class="diag-card">
+    <div class="diag-card-header">
+      <span class="diag-card-title">Your Diagnostic</span>
+      <span class="diag-badge">Live results</span>
+    </div>
+
+    <!-- Math -->
+    <div class="diag-skill-row">
+      <span class="diag-skill-name">Math</span>
+      <div class="diag-bar-wrap">
+        <div class="diag-bar-fill" style="width:78%"></div>
+      </div>
+      <span class="diag-score blue">3.9</span>
+    </div>
+
+    <!-- Structuring -->
+    <div class="diag-skill-row">
+      <span class="diag-skill-name">Structuring</span>
+      <div class="diag-bar-wrap">
+        <div class="diag-bar-fill" style="width:62%"></div>
+      </div>
+      <span class="diag-score blue">3.1</span>
+    </div>
+
+    <!-- Behavioral — weakest -->
+    <div class="diag-skill-row">
+      <span class="diag-skill-name">Behavioral</span>
+      <div class="diag-bar-wrap">
+        <div class="diag-bar-fill red" style="width:32%"></div>
+      </div>
+      <span class="diag-score red">1.6</span>
+      <span class="diag-weakest-label">Weakest</span>
+    </div>
+
+    <!-- Sizing -->
+    <div class="diag-skill-row">
+      <span class="diag-skill-name">Sizing</span>
+      <div class="diag-bar-wrap">
+        <div class="diag-bar-fill" style="width:70%"></div>
+      </div>
+      <span class="diag-score blue">3.5</span>
+    </div>
+
+    <div class="diag-next-cta">
+      <span class="diag-next-label">Next drill</span>
+      <a href="behavioral.html" class="diag-next-action">Behavioral →</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- TRUST BAR -->
+<div class="v1-trust">
+  <strong>Used at</strong>
+  Wharton &nbsp;·&nbsp; HBS &nbsp;·&nbsp; Booth &nbsp;·&nbsp; Stanford &nbsp;·&nbsp; Kellogg &nbsp;·&nbsp; Sloan &nbsp;·&nbsp; Columbia &nbsp;·&nbsp; Tuck &nbsp;·&nbsp; Darden
+</div>
+
+<!-- CONTRAST SECTION -->
+<section class="contrast-section">
+  <p class="contrast-eyebrow">Why PrepGym is different</p>
+  <div class="contrast-grid">
+    <div class="contrast-col contrast-col-left">
+      <div class="contrast-col-header">Every other platform</div>
+      <div class="contrast-item"><span class="contrast-icon-x">✕</span><span>Full case from day one</span></div>
+      <div class="contrast-item"><span class="contrast-icon-x">✕</span><span>Repeat until something improves</span></div>
+      <div class="contrast-item"><span class="contrast-icon-x">✕</span><span>No idea what's costing you</span></div>
+      <div class="contrast-item"><span class="contrast-icon-x">✕</span><span>Behavioral prepped last-minute</span></div>
+    </div>
+    <div class="contrast-col contrast-col-right">
+      <div class="contrast-col-header">PrepGym</div>
+      <div class="contrast-item"><span class="contrast-icon-check">✓</span><span>Diagnostic finds your weakness first</span></div>
+      <div class="contrast-item"><span class="contrast-icon-check">✓</span><span>Drill only what you keep missing</span></div>
+      <div class="contrast-item"><span class="contrast-icon-check">✓</span><span>Know your gap before the interview</span></div>
+      <div class="contrast-item"><span class="contrast-icon-check">✓</span><span>Case sim after you're ready</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHT BAR -->
+<div class="insight-bar">
+  <div class="insight-number">12 min</div>
+  <p class="insight-sub">Average time to finding a weakness candidates didn't know they had.</p>
+</div>
+
+<!-- 5-STEP FUNNEL -->
+<section id="funnel" class="funnel-section">
+  <div class="funnel-section-header">
+    <h2>The full prep funnel</h2>
+    <p class="text-sm" style="color:var(--text3);margin-top:6px;">Not just cases. The whole sequence — in order.</p>
+  </div>
+  <div class="funnel-steps">
+
+    <div class="funnel-step">
+      <span class="funnel-step-num">Step 1</span>
+      <span class="funnel-step-title">Resume Screen</span>
+      <span class="funnel-step-desc">MBB rubric scoring. Know your screen odds before you submit.</span>
+      <div class="funnel-step-badge"><span class="badge badge-green">Free</span></div>
+    </div>
+
+    <div class="funnel-step">
+      <span class="funnel-step-num">Step 2</span>
+      <span class="funnel-step-title">Diagnostic</span>
+      <span class="funnel-step-desc">10-minute assessment reveals your actual weak spot.</span>
+      <div class="funnel-step-badge"><span class="badge badge-green">Free</span></div>
+    </div>
+
+    <div class="funnel-step highlight">
+      <span class="funnel-step-num">Step 3</span>
+      <span class="funnel-step-title">Skill Drills</span>
+      <span class="funnel-step-desc">Timed drills on exactly where you fell short.</span>
+      <div class="funnel-step-badge"><span class="badge badge-accent">Sprint</span></div>
+    </div>
+
+    <div class="funnel-step">
+      <span class="funnel-step-num">Step 4</span>
+      <span class="funnel-step-title">Behavioral</span>
+      <span class="funnel-step-desc">McKinsey PEI rapid-fire and STAR story bank.</span>
+      <div class="funnel-step-badge"><span class="badge badge-accent">Sprint</span></div>
+    </div>
+
+    <div class="funnel-step">
+      <span class="funnel-step-num">Step 5</span>
+      <span class="funnel-step-title">Case Sim</span>
+      <span class="funnel-step-desc">AI-led full cases — once your foundation is solid.</span>
+      <div class="funnel-step-badge"><span class="badge badge-yellow">Full Prep</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VERTICALS -->
+<div class="verticals-row">
+  <span class="badge badge-accent" style="padding:6px 14px;font-size:12px;">Consulting — Live</span>
+  <span class="badge badge-gray" style="padding:6px 14px;font-size:12px;">Private Equity — Coming 2026</span>
+  <span class="badge badge-gray" style="padding:6px 14px;font-size:12px;">MMI Medical — Coming 2026</span>
+  <span class="badge badge-gray" style="padding:6px 14px;font-size:12px;">VC — Coming 2026</span>
+</div>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div class="pricing-section-header">
+    <h2>Simple pricing</h2>
+    <p class="text-sm" style="color:var(--text3);margin-top:6px;">Less than one coaching session. No subscription.</p>
+  </div>
+  <div class="pricing-grid">
+
+    <div class="v1-pricing-card">
+      <h4>Free</h4>
+      <div class="v1-price">$0</div>
+      <div class="v1-price-period">Forever · no card needed</div>
+      <ul class="v1-feature-list">
+        <li>Resume screen + MBB audit</li>
+        <li>Full diagnostic assessment</li>
+        <li>Radar chart + priority list</li>
+        <li>3 drill sessions included</li>
+      </ul>
+      <a href="resume.html" class="btn btn-secondary btn-full">Start Free</a>
+    </div>
+
+    <div class="v1-pricing-card featured">
+      <div class="flex justify-between items-center mb-8">
+        <h4>Sprint</h4>
+        <span class="badge badge-accent">Most Popular</span>
+      </div>
+      <div class="v1-price">$99</div>
+      <div class="v1-price-period">8 weeks · one-time</div>
+      <ul class="v1-feature-list">
+        <li>Everything in Free</li>
+        <li>All drill categories (100+ problems)</li>
+        <li>Behavioral rapid-fire (PEI)</li>
+        <li>STAR story bank builder</li>
+        <li>Progress tracking + leaderboard</li>
+      </ul>
+      <a href="dashboard.html" class="btn btn-primary btn-full">Start Sprint — $99</a>
+    </div>
+
+    <div class="v1-pricing-card dim">
+      <h4>Full Prep</h4>
+      <div class="v1-price">$149</div>
+      <div class="v1-price-period">12 weeks · includes Case Sim</div>
+      <ul class="v1-feature-list">
+        <li>Everything in Sprint</li>
+        <li>AI case simulations (Step 5)</li>
+        <li>Firm-specific modes</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="#" class="btn btn-secondary btn-full" style="cursor:default;pointer-events:none;">Coming Soon</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="v1-footer">
+  <a href="index-v1.html" class="logo" style="font-size:15px;">Prep<span>Gym</span></a>
+  <div class="footer-links">
+    <a href="#" class="nav-link text-sm">Privacy</a>
+    <a href="#" class="nav-link text-sm">Terms</a>
+    <a href="#" class="nav-link text-sm">Contact</a>
+    <span class="text-xs text-muted">© 2026 PrepGym</span>
+  </div>
+</footer>
+
+<script>
+  const words = ['behavioral', 'math', 'structuring', 'sizing'];
+  let i = 0;
+  const el = document.getElementById('cycle');
+  setInterval(() => {
+    i = (i + 1) % words.length;
+    el.style.opacity = '0';
+    setTimeout(() => {
+      el.textContent = words[i];
+      el.style.opacity = '1';
+    }, 200);
+  }, 2000);
+  el.style.transition = 'opacity 0.2s ease';
+</script>
+
+</body>
+</html>

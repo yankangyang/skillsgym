@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Mental Math Drill</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Minimal nav during drill -->
+<nav class="nav" style="justify-content:space-between;">
+  <div class="flex items-center gap-16">
+    <a href="index.html" class="logo">Prep<span>Gym</span></a>
+    <span class="badge badge-accent" style="font-size:12px;">⚡ Mental Math</span>
+    <span class="text-sm text-muted">Problem 13 / 30 · Difficulty ★★★☆☆</span>
+  </div>
+  <div class="flex items-center gap-12">
+    <span class="text-sm" style="color:var(--yellow-light);">🔥 6 correct in a row</span>
+    <a href="drills.html" class="btn btn-ghost btn-sm">Exit Drill</a>
+  </div>
+</nav>
+
+<main style="max-width:680px;margin:0 auto;padding:40px 32px;">
+
+  <!-- Progress bar -->
+  <div class="mb-24">
+    <div class="flex justify-between text-xs text-muted mb-8">
+      <span>13 / 30 problems</span>
+      <span>43% complete</span>
+    </div>
+    <div class="progress-bar" style="height:8px;">
+      <div class="progress-fill green" style="width:43%;"></div>
+    </div>
+    <!-- Problem dot markers -->
+    <div class="flex gap-3 mt-8" style="flex-wrap:wrap;">
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;" title="Correct"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;" title="Missed"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;" title="Current"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--border);display:inline-block;" title="Remaining" ></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--border);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--border);display:inline-block;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--border);display:inline-block;"></span>
+    </div>
+  </div>
+
+  <!-- Timer -->
+  <div class="text-center mb-32">
+    <div class="timer" id="timer">0:28</div>
+    <p class="text-xs mt-8 text-muted">Target: under 30 seconds · Average time so far: 22s</p>
+  </div>
+
+  <!-- Question -->
+  <div class="question-card mb-28">
+    <div class="flex gap-8 mb-20">
+      <span class="badge badge-gray">Break-even</span>
+      <span class="badge badge-yellow">★★★</span>
+    </div>
+    <p class="question-text" style="font-size:1.2rem;">"A product costs <strong style="color:var(--accent-light);">$240</strong> to produce and sells for <strong style="color:var(--accent-light);">$300</strong>. Fixed costs are <strong style="color:var(--accent-light);">$18,000</strong> per month. How many units must be sold to break even?"</p>
+  </div>
+
+  <!-- Answer input -->
+  <div id="input-section">
+    <label class="label text-center" style="text-align:center;display:block;margin-bottom:12px;">Your answer</label>
+    <div class="flex justify-center gap-12 mb-20">
+      <div style="position:relative;display:inline-flex;align-items:center;">
+        <span style="position:absolute;left:14px;font-size:16px;color:var(--text3);">≈</span>
+        <input type="text" id="answer-input" class="input" style="width:160px;font-size:1.6rem;font-weight:800;text-align:center;padding:12px 14px;letter-spacing:-0.02em;" placeholder="300" maxlength="8">
+      </div>
+      <div style="align-self:center;font-size:14px;color:var(--text3);">units</div>
+    </div>
+
+    <!-- Numpad -->
+    <div class="numpad" style="margin:0 auto 20px;">
+      <button class="numpad-key" onclick="appendDigit('7')">7</button>
+      <button class="numpad-key" onclick="appendDigit('8')">8</button>
+      <button class="numpad-key" onclick="appendDigit('9')">9</button>
+      <button class="numpad-key" onclick="appendDigit('4')">4</button>
+      <button class="numpad-key" onclick="appendDigit('5')">5</button>
+      <button class="numpad-key" onclick="appendDigit('6')">6</button>
+      <button class="numpad-key" onclick="appendDigit('1')">1</button>
+      <button class="numpad-key" onclick="appendDigit('2')">2</button>
+      <button class="numpad-key" onclick="appendDigit('3')">3</button>
+      <button class="numpad-key" onclick="appendDigit('0')">0</button>
+      <button class="numpad-key" onclick="appendDigit('00')">00</button>
+      <button class="numpad-key" onclick="clearLast()" style="color:var(--red-light);">⌫</button>
+    </div>
+
+    <div class="flex justify-center gap-12">
+      <button class="btn btn-ghost" onclick="showHint()">💡 Hint</button>
+      <button class="btn btn-primary btn-lg" onclick="revealAnswer()" style="min-width:160px;">Submit Answer →</button>
+    </div>
+  </div>
+
+  <!-- Hint (hidden initially) -->
+  <div id="hint-section" class="alert alert-accent mt-16" style="display:none;">
+    <span class="alert-icon">💡</span>
+    <div>
+      <strong style="color:var(--accent-light);">Hint</strong>
+      <p class="text-sm mt-4" style="color:var(--text2);">Break-even = Fixed Costs ÷ Contribution Margin per unit.<br>Contribution Margin = Selling Price − Variable Cost per unit.</p>
+    </div>
+  </div>
+
+  <!-- Answer reveal section (hidden initially) -->
+  <div id="reveal-section" style="display:none;">
+    <div class="card card-lg text-center mb-20" style="border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.05);">
+      <div style="font-size:3rem;font-weight:900;color:var(--green-light);letter-spacing:-0.05em;">300 units</div>
+      <p class="text-sm mt-8" style="color:var(--text2);">
+        <strong style="color:var(--text);">How to get there:</strong><br>
+        Contribution margin = $300 − $240 = <strong style="color:var(--green-light);">$60</strong><br>
+        Break-even = $18,000 ÷ $60 = <strong style="color:var(--green-light);">300 units</strong>
+      </p>
+      <div class="alert alert-accent mt-16" style="text-align:left;">
+        <span class="alert-icon">💡</span>
+        <p class="text-sm" style="color:var(--text2);">
+          <strong style="color:var(--accent-light);">Interviewer tip:</strong> Always anchor contribution margin first. In case interviews, break-even questions test whether you can identify variable vs. fixed costs — not just the arithmetic.
+        </p>
+      </div>
+    </div>
+    <div class="flex justify-center gap-12">
+      <button class="btn btn-success btn-lg" onclick="nextQuestion(true)" style="min-width:140px;">✓ Got It</button>
+      <button class="btn btn-danger btn-lg" onclick="nextQuestion(false)" style="min-width:140px;">✗ Missed It</button>
+    </div>
+    <p class="text-center text-xs mt-12 text-muted">Be honest — your score only improves if you're accurate about what you know.</p>
+  </div>
+
+</main>
+
+<script>
+function appendDigit(d) {
+  const el = document.getElementById('answer-input');
+  if (el.value.length < 8) el.value += d;
+}
+function clearLast() {
+  const el = document.getElementById('answer-input');
+  el.value = el.value.slice(0, -1);
+}
+function showHint() {
+  document.getElementById('hint-section').style.display = 'flex';
+}
+function revealAnswer() {
+  document.getElementById('input-section').style.display = 'none';
+  document.getElementById('hint-section').style.display = 'none';
+  document.getElementById('reveal-section').style.display = 'block';
+  clearInterval(timerInterval);
+}
+function nextQuestion(correct) {
+  window.location.reload();
+}
+
+let seconds = 28;
+const timerEl = document.getElementById('timer');
+const timerInterval = setInterval(() => {
+  seconds++;
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  timerEl.textContent = m + ':' + String(s).padStart(2, '0');
+  if (seconds >= 30) timerEl.classList.add('warning');
+  if (seconds >= 60) { timerEl.classList.remove('warning'); timerEl.classList.add('danger'); }
+}, 1000);
+</script>
+
+</body>
+</html>

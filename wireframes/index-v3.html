@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Know the gap. Close it.</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --bg: #0d0a0e;
+      --surface: #14101a;
+      --surface2: #1c1624;
+      --border: #2a2038;
+      --border2: #3d3054;
+      --text: #ede8f5;
+      --text2: #9988bb;
+      --text3: #665588;
+      --accent: #9333ea;
+      --accent-hover: #7e22ce;
+      --accent-light: #c084fc;
+      --green: #10b981;
+      --green-light: #34d399;
+      --yellow: #f59e0b;
+      --yellow-light: #fbbf24;
+      --red: #ef4444;
+      --red-light: #f87171;
+    }
+
+    /* ── HERO ── */
+    .v3-hero {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 108px 32px 80px;
+      text-align: center;
+    }
+    .v3-hero-title {
+      font-size: 4.8rem;
+      font-weight: 900;
+      letter-spacing: -0.065em;
+      line-height: 1.02;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .v3-hero-sub {
+      font-size: 1.05rem;
+      color: var(--text2);
+      line-height: 1.7;
+      max-width: 420px;
+      margin: 0 auto 36px;
+    }
+    .v3-hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 10px;
+      letter-spacing: -0.01em;
+      transition: background 0.15s;
+      border: none;
+    }
+    .v3-hero-cta:hover { background: var(--accent-hover); }
+
+    /* ── PULL QUOTE ── */
+    .v3-pullquote-wrap {
+      max-width: 680px;
+      margin: 0 auto 80px;
+      padding: 0 32px;
+    }
+    .v3-pullquote {
+      border-left: 3px solid var(--accent);
+      padding: 20px 28px;
+      background: var(--surface);
+      border-radius: 0 10px 10px 0;
+    }
+    .v3-pullquote-text {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text2);
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    }
+    .v3-pullquote-text em { font-style: normal; color: var(--text); }
+
+    /* ── SECTION SCAFFOLDING ── */
+    .v3-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .v3-section-divider {
+      max-width: 900px;
+      margin: 0 auto 64px;
+      padding: 0 32px;
+      border-top: 1px solid var(--border);
+    }
+    .v3-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text3);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .v3-section-title {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .v3-section-sub {
+      font-size: 13px;
+      color: var(--text3);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    /* ── 5-STEP FUNNEL (clean numbered cards) ── */
+    .funnel-section-v3 {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px 72px;
+    }
+    .funnel-5grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .v3-funnel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .v3-step-num {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: var(--border2);
+      line-height: 1;
+    }
+    .v3-step-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .v3-step-desc {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .v3-step-badge { margin-top: auto; }
+
+    /* ── SAT ANALOGY ── */
+    .v3-sat-block {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 32px 72px;
+      text-align: center;
+    }
+    .v3-sat-text {
+      font-size: 0.95rem;
+      color: var(--text3);
+      line-height: 1.75;
+    }
+    .v3-sat-text strong { color: var(--text2); font-weight: 600; }
+
+    /* ── INSIGHT ── */
+    .v3-insight {
+      text-align: center;
+      padding: 60px 32px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 72px;
+    }
+    .v3-insight-number {
+      font-size: 5.5rem;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      color: var(--accent-light);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .v3-insight-sub {
+      font-size: 1rem;
+      color: var(--text2);
+    }
+
+    /* ── VERTICALS ── */
+    .v3-verticals {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0 32px;
+      margin-bottom: 72px;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section-v3 {
+      max-width: 860px;
+      margin: 0 auto 72px;
+      padding: 0 32px;
+    }
+    .pricing-grid-v3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+    .v3-pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+    }
+    .v3-pricing-card.featured {
+      border-color: var(--accent);
+    }
+    .v3-pricing-card.dim {
+      opacity: 0.55;
+    }
+    .v3-price {
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin: 8px 0 3px;
+      color: var(--text);
+    }
+    .v3-price-period {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 18px;
+    }
+    .v3-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+    .v3-feature-list li {
+      font-size: 13px;
+      color: var(--text2);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .v3-feature-list li::before {
+      content: '✓';
+      color: var(--accent-light);
+      font-weight: 800;
+      font-size: 11px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    .v3-footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 32px;
+    }
+    .v3-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .v3-footer-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index-v3.html" class="logo">Prep<span>Gym</span></a>
+    <a href="#funnel" class="nav-link">How it works</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+  </div>
+  <div class="nav-right">
+    <a href="dashboard.html" class="btn btn-ghost btn-sm">Sign In</a>
+    <a href="resume.html" class="btn btn-primary btn-sm">Get Started Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="v3-hero">
+  <h1 class="v3-hero-title">Know the gap.<br>Close it.</h1>
+  <p class="v3-hero-sub">The diagnostic finds where you'd actually fail. Then you drill that — not everything.</p>
+  <a href="resume.html" class="v3-hero-cta">Find Your Weakest Skill →</a>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="v3-pullquote-wrap">
+  <div class="v3-pullquote">
+    <p class="v3-pullquote-text">
+      <em>"Every other platform starts you at a full case.</em> We start you at your weakest skill."
+    </p>
+  </div>
+</div>
+
+<!-- 5-STEP FUNNEL -->
+<section id="funnel" class="funnel-section-v3">
+  <p class="v3-section-label" style="text-align:center;margin-bottom:10px;">How it works</p>
+  <h2 style="text-align:center;margin-bottom:8px;color:var(--text);letter-spacing:-0.03em;">Five steps. In sequence.</h2>
+  <p style="text-align:center;font-size:13px;color:var(--text3);margin-bottom:32px;">Steps 1–2 are free. Sprint unlocks 3–4. Full Prep adds Step 5.</p>
+  <div class="funnel-5grid">
+
+    <div class="v3-funnel-card">
+      <div class="v3-step-num">01</div>
+      <div class="v3-step-title">Resume Screen</div>
+      <div class="v3-step-desc">MBB rubric scoring on every bullet. Know your screen odds before submitting.</div>
+      <div class="v3-step-badge"><span class="badge badge-green">Free</span></div>
+    </div>
+
+    <div class="v3-funnel-card">
+      <div class="v3-step-num">02</div>
+      <div class="v3-step-title">Diagnostic</div>
+      <div class="v3-step-desc">10-minute assessment across 4 categories. Pinpoints your actual weak spot.</div>
+      <div class="v3-step-badge"><span class="badge badge-green">Free</span></div>
+    </div>
+
+    <div class="v3-funnel-card">
+      <div class="v3-step-num">03</div>
+      <div class="v3-step-title">Skill Drills</div>
+      <div class="v3-step-desc">Timed, scored drills on the category you keep missing — not the whole case.</div>
+      <div class="v3-step-badge"><span class="badge badge-accent">Sprint</span></div>
+    </div>
+
+    <div class="v3-funnel-card">
+      <div class="v3-step-num">04</div>
+      <div class="v3-step-title">Behavioral</div>
+      <div class="v3-step-desc">McKinsey PEI rapid-fire, STAR builder. The gap every other platform ignores.</div>
+      <div class="v3-step-badge"><span class="badge badge-accent">Sprint</span></div>
+    </div>
+
+    <div class="v3-funnel-card">
+      <div class="v3-step-num">05</div>
+      <div class="v3-step-title">Case Sim</div>
+      <div class="v3-step-desc">AI-led full simulations. Once your foundation is solid, not before.</div>
+      <div class="v3-step-badge"><span class="badge badge-yellow">Full Prep</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SAT ANALOGY -->
+<div class="v3-sat-block">
+  <p class="v3-sat-text">
+    <strong>Like SAT prep that only drills the question types you keep missing.</strong><br>
+    Not another practice test from the start.
+  </p>
+</div>
+
+<!-- INSIGHT -->
+<div class="v3-insight">
+  <div class="v3-insight-number">12 min</div>
+  <p class="v3-insight-sub">Average time to your first real insight.</p>
+</div>
+
+<!-- VERTICALS -->
+<div class="v3-verticals">
+  <span class="badge badge-accent" style="padding:6px 14px;font-size:12px;">Consulting — Live</span>
+  <span class="badge badge-gray" style="padding:6px 14px;font-size:12px;">Private Equity — Coming 2026</span>
+  <span class="badge badge-gray" style="padding:6px 14px;font-size:12px;">MMI Medical — Coming 2026</span>
+  <span class="badge badge-gray" style="padding:6px 14px;font-size:12px;">VC — Coming 2026</span>
+</div>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section-v3">
+  <p class="v3-section-label" style="text-align:center;margin-bottom:10px;">Pricing</p>
+  <h2 style="text-align:center;margin-bottom:8px;color:var(--text);letter-spacing:-0.03em;">Simple. No subscription.</h2>
+  <p style="text-align:center;font-size:13px;color:var(--text3);margin-bottom:32px;">Less than one hour of coaching.</p>
+  <div class="pricing-grid-v3">
+
+    <div class="v3-pricing-card">
+      <h4>Free</h4>
+      <div class="v3-price">$0</div>
+      <div class="v3-price-period">Forever · no card needed</div>
+      <ul class="v3-feature-list">
+        <li>Resume screen + MBB audit</li>
+        <li>Full diagnostic</li>
+        <li>Radar chart + priority list</li>
+        <li>3 drill sessions</li>
+      </ul>
+      <a href="resume.html" class="btn btn-secondary btn-full">Start Free</a>
+    </div>
+
+    <div class="v3-pricing-card featured">
+      <div class="flex justify-between items-center mb-8">
+        <h4>Sprint</h4>
+        <span class="badge badge-accent">Most Popular</span>
+      </div>
+      <div class="v3-price">$99</div>
+      <div class="v3-price-period">8 weeks · one-time</div>
+      <ul class="v3-feature-list">
+        <li>Everything in Free</li>
+        <li>All drill categories (100+ problems)</li>
+        <li>Behavioral rapid-fire (PEI)</li>
+        <li>STAR story bank builder</li>
+        <li>Progress tracking + leaderboard</li>
+      </ul>
+      <a href="dashboard.html" class="btn btn-primary btn-full">Start Sprint — $99</a>
+    </div>
+
+    <div class="v3-pricing-card dim">
+      <h4>Full Prep</h4>
+      <div class="v3-price">$149</div>
+      <div class="v3-price-period">12 weeks · includes Case Sim</div>
+      <ul class="v3-feature-list">
+        <li>Everything in Sprint</li>
+        <li>AI case simulations (Step 5)</li>
+        <li>Firm-specific modes</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="#" class="btn btn-secondary btn-full" style="cursor:default;pointer-events:none;">Coming Soon</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="v3-footer">
+  <div class="v3-footer-inner">
+    <a href="index-v3.html" class="logo" style="font-size:15px;">Prep<span>Gym</span></a>
+    <div class="v3-footer-links">
+      <a href="#" class="nav-link text-sm">Privacy</a>
+      <a href="#" class="nav-link text-sm">Terms</a>
+      <a href="#" class="nav-link text-sm">Contact</a>
+      <span class="text-xs text-muted">© 2026 PrepGym</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

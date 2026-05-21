@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Diagnostic Results</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index.html" class="logo">Prep<span>Gym</span></a>
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+    <a href="drills.html" class="nav-link">Drills</a>
+    <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+  </div>
+  <div class="nav-right">
+    <a href="story-bank.html" class="btn btn-ghost btn-sm">Story Bank</a>
+    <div class="avatar">AK</div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="page-header">
+    <div>
+      <h1>Diagnostic Results</h1>
+      <p class="mt-4">Completed Apr 29, 2026 · 10 min 42 sec · Retake #1</p>
+    </div>
+    <div class="flex gap-8">
+      <button class="btn btn-ghost btn-sm">Share Results</button>
+      <a href="diagnostic.html" class="btn btn-secondary btn-sm">Retake Diagnostic</a>
+    </div>
+  </div>
+
+  <!-- Readiness score banner -->
+  <div class="alert alert-yellow mb-32">
+    <span class="alert-icon" style="font-size:20px;">🎯</span>
+    <div class="flex-1">
+      <strong style="color:var(--yellow-light);font-size:1rem;">Readiness Score: 48 / 100</strong>
+      <p class="text-sm mt-4" style="color:var(--text2);">You're below the threshold where MBB interviewers start to feel confident in a candidate. The good news: your sizing score (3.8) shows you can think quantitatively. The critical gap is behavioral — you can't pass the fit interview at 1.2/5.</p>
+    </div>
+    <div style="flex-shrink:0;text-align:center;">
+      <div style="font-size:2.5rem;font-weight:900;color:var(--yellow-light);letter-spacing:-0.05em;">48</div>
+      <div class="text-xs text-muted" style="margin-top:2px;">out of 100</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap:32px;align-items:start;">
+
+    <!-- Radar chart -->
+    <div class="card text-center">
+      <h3 class="mb-4">Skill Radar</h3>
+      <p class="text-sm text-muted mb-24">Where you stand across 5 consulting skill categories</p>
+      <canvas id="radarChart" width="350" height="350" style="max-width:100%;"></canvas>
+      <div class="flex justify-center gap-16 mt-16">
+        <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text2);">
+          <div style="width:12px;height:3px;background:var(--accent);border-radius:2px;"></div>
+          Your scores
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text3);">
+          <div style="width:12px;height:3px;background:var(--border2);border-radius:2px;"></div>
+          MBB pass threshold (3.5/5)
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: scores + priority list -->
+    <div style="display:flex;flex-direction:column;gap:24px;">
+
+      <!-- Score breakdown -->
+      <div class="card">
+        <h3 class="mb-20">Score Breakdown</h3>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div class="flex justify-between mb-8">
+              <div class="flex items-center gap-8">
+                <span style="font-size:14px;font-weight:600;color:var(--text);">Mental Math</span>
+                <span class="badge badge-green">Above threshold</span>
+              </div>
+              <span style="font-size:16px;font-weight:800;color:var(--green-light);">3.0 / 5</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill green" style="width:60%;"></div></div>
+            <p class="text-xs mt-4 text-muted">Avg speed: 32s/problem. Some accuracy issues on CAGR and break-even.</p>
+          </div>
+          <div>
+            <div class="flex justify-between mb-8">
+              <div class="flex items-center gap-8">
+                <span style="font-size:14px;font-weight:600;color:var(--text);">Structuring</span>
+                <span class="badge badge-yellow">Below threshold</span>
+              </div>
+              <span style="font-size:16px;font-weight:800;color:var(--yellow-light);">2.1 / 5</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill yellow" style="width:42%;"></div></div>
+            <p class="text-xs mt-4 text-muted">Frameworks lack MECE discipline. Buckets overlap. Missing case-specific tailoring.</p>
+          </div>
+          <div>
+            <div class="flex justify-between mb-8">
+              <div class="flex items-center gap-8">
+                <span style="font-size:14px;font-weight:600;color:var(--text);">Market Sizing</span>
+                <span class="badge badge-green">Strongest skill</span>
+              </div>
+              <span style="font-size:16px;font-weight:800;color:var(--green-light);">3.8 / 5</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill green" style="width:76%;"></div></div>
+            <p class="text-xs mt-4 text-muted">Solid decomposition and math. Sanity-check instincts are good.</p>
+          </div>
+          <div>
+            <div class="flex justify-between mb-8">
+              <div class="flex items-center gap-8">
+                <span style="font-size:14px;font-weight:600;color:var(--text);">Behavioral</span>
+                <span class="badge badge-red">Critical gap</span>
+              </div>
+              <span style="font-size:16px;font-weight:800;color:var(--red-light);">1.2 / 5</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill red" style="width:24%;"></div></div>
+            <p class="text-xs mt-4 text-muted">STAR structure absent. Answers lack specificity and "so what." McKinsey PEI is not survivable at this score.</p>
+          </div>
+          <div>
+            <div class="flex justify-between mb-8">
+              <div class="flex items-center gap-8">
+                <span style="font-size:14px;font-weight:600;color:var(--text);">Chart Interpretation</span>
+                <span class="badge badge-yellow">Below threshold</span>
+              </div>
+              <span style="font-size:16px;font-weight:800;color:var(--yellow-light);">2.8 / 5</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill yellow" style="width:56%;"></div></div>
+            <p class="text-xs mt-4 text-muted">Reads data correctly but misses the "so what" insight in 3 of 4 charts.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Priority fix list -->
+      <div class="card" style="border-color:rgba(99,102,241,0.3);background:rgba(99,102,241,0.04);">
+        <h3 class="mb-16">Your Priority Fix List</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="flex items-start gap-12">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--red);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;">1</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--text);">Behavioral — McKinsey PEI drills</div>
+              <p class="text-xs mt-4 text-muted">30-day intensive. Target: 3.5+. Build 6 STAR stories covering leadership, conflict, failure.</p>
+              <a href="behavioral.html" class="btn btn-danger btn-sm mt-8">Start Now →</a>
+            </div>
+          </div>
+          <hr>
+          <div class="flex items-start gap-12">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--yellow);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;">2</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--text);">Structuring — Framework drills</div>
+              <p class="text-xs mt-4 text-muted">15 timed structuring prompts. Focus: MECE discipline and case-type tailoring.</p>
+              <a href="drills.html" class="btn btn-secondary btn-sm mt-8">Start Drills →</a>
+            </div>
+          </div>
+          <hr>
+          <div class="flex items-start gap-12">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--yellow);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;">3</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--text);">Charts — "So what" training</div>
+              <p class="text-xs mt-4 text-muted">10 chart interpretation drills. Learn to extract insight, not just describe the data.</p>
+              <a href="drills.html" class="btn btn-secondary btn-sm mt-8">Start Drills →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Benchmark comparison -->
+  <div class="card mt-24">
+    <h3 class="mb-16">How you compare</h3>
+    <div class="grid-4">
+      <div class="text-center">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--accent-light);">Top 52%</div>
+        <div class="text-xs text-muted mt-4">Math nationally</div>
+      </div>
+      <div class="text-center">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--yellow-light);">Top 71%</div>
+        <div class="text-xs text-muted mt-4">Structuring at Wharton</div>
+      </div>
+      <div class="text-center">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--green-light);">Top 28%</div>
+        <div class="text-xs text-muted mt-4">Sizing nationally</div>
+      </div>
+      <div class="text-center">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--red-light);">Bottom 12%</div>
+        <div class="text-xs text-muted mt-4">Behavioral nationally</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function() {
+  const canvas = document.getElementById('radarChart');
+  if (!canvas || !canvas.getContext) return;
+  const ctx = canvas.getContext('2d');
+  const cx = 175, cy = 175, maxR = 130;
+  const scores = [3.0, 2.1, 3.8, 1.2, 2.8];
+  const threshold = [3.5, 3.5, 3.5, 3.5, 3.5];
+  const labels = ['Math', 'Structuring', 'Sizing', 'Behavioral', 'Charts'];
+  const n = 5;
+
+  function pt(i, r) {
+    const a = (i / n) * 2 * Math.PI - Math.PI / 2;
+    return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+  }
+
+  // Grid pentagons
+  for (let lv = 1; lv <= 5; lv++) {
+    const r = (lv / 5) * maxR;
+    ctx.beginPath();
+    ctx.strokeStyle = lv === 4 ? 'rgba(245,158,11,0.2)' : '#252840';
+    ctx.lineWidth = lv === 4 ? 1.5 : 1;
+    for (let i = 0; i < n; i++) {
+      const [x, y] = pt(i, r);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // Axis lines
+  for (let i = 0; i < n; i++) {
+    const [x, y] = pt(i, maxR);
+    ctx.beginPath();
+    ctx.strokeStyle = '#353a5e';
+    ctx.lineWidth = 1;
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  }
+
+  // Threshold polygon
+  ctx.beginPath();
+  ctx.strokeStyle = 'rgba(107,114,153,0.4)';
+  ctx.setLineDash([4, 4]);
+  ctx.lineWidth = 1.5;
+  for (let i = 0; i < n; i++) {
+    const r = (threshold[i] / 5) * maxR;
+    const [x, y] = pt(i, r);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Data polygon fill
+  ctx.beginPath();
+  ctx.fillStyle = 'rgba(99,102,241,0.18)';
+  for (let i = 0; i < n; i++) {
+    const r = (scores[i] / 5) * maxR;
+    const [x, y] = pt(i, r);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.fill();
+
+  // Data polygon stroke
+  ctx.beginPath();
+  ctx.strokeStyle = '#6366f1';
+  ctx.lineWidth = 2.5;
+  for (let i = 0; i < n; i++) {
+    const r = (scores[i] / 5) * maxR;
+    const [x, y] = pt(i, r);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.stroke();
+
+  // Dots
+  const dotColors = ['#34d399','#fbbf24','#34d399','#f87171','#fbbf24'];
+  for (let i = 0; i < n; i++) {
+    const r = (scores[i] / 5) * maxR;
+    const [x, y] = pt(i, r);
+    ctx.beginPath();
+    ctx.fillStyle = dotColors[i];
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.strokeStyle = '#0c0e18';
+    ctx.lineWidth = 2;
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  // Labels
+  ctx.font = '600 12px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  const labelColors = ['#34d399','#fbbf24','#34d399','#f87171','#fbbf24'];
+  for (let i = 0; i < n; i++) {
+    const [x, y] = pt(i, maxR + 22);
+    ctx.fillStyle = labelColors[i];
+    ctx.fillText(labels[i], x, y);
+  }
+
+  // Score labels near dots
+  ctx.font = 'bold 11px system-ui';
+  ctx.fillStyle = '#e0e2ef';
+  for (let i = 0; i < n; i++) {
+    const r = (scores[i] / 5) * maxR;
+    const [x, y] = pt(i, r);
+    const off = pt(i, 18);
+    const ox = off[0] - cx, oy = off[1] - cy;
+    ctx.fillText(scores[i].toFixed(1), x + ox * 0.6, y + oy * 0.6);
+  }
+})();
+</script>
+</body>
+</html>

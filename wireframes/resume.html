@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Resume Screen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index.html" class="logo">Prep<span>Gym</span></a>
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
+    <a href="resume.html" class="nav-link active">Resume</a>
+    <a href="drills.html" class="nav-link">Drills</a>
+    <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+  </div>
+  <div class="nav-right">
+    <a href="story-bank.html" class="btn btn-ghost btn-sm">Story Bank</a>
+    <div class="avatar">AK</div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- View toggle -->
+  <div class="tabs" style="margin-bottom:32px;">
+    <button class="tab">Upload New</button>
+    <button class="tab active">Audit Results</button>
+  </div>
+
+  <!-- RESULTS VIEW -->
+  <div class="page-header">
+    <div>
+      <h1>Resume Audit</h1>
+      <p class="mt-4">Screened against McKinsey · BCG · Bain rubric · Apr 29, 2026</p>
+    </div>
+    <div class="flex gap-8 items-center">
+      <button class="btn btn-ghost btn-sm">Download Report</button>
+      <button class="btn btn-secondary btn-sm">Upload New Resume</button>
+    </div>
+  </div>
+
+  <!-- Survival estimate + top flags -->
+  <div class="grid-2 mb-32" style="gap:24px;align-items:start;">
+
+    <!-- Survival score -->
+    <div class="card card-lg text-center" style="border-color:rgba(239,68,68,0.35);background:rgba(239,68,68,0.04);">
+      <h4 class="mb-16">MBB Screen Survival Estimate</h4>
+      <div style="font-size:5rem;font-weight:900;letter-spacing:-0.06em;color:var(--red-light);line-height:1;">42%</div>
+      <p class="text-sm mt-8" style="color:var(--text2);max-width:280px;margin:8px auto 0;">Most MBB screeners spend under 6 seconds per bullet. At your current quality, roughly 4 in 10 screeners continue reading past page 1.</p>
+      <hr style="margin:20px 0;">
+      <div class="flex justify-center gap-24">
+        <div>
+          <div style="font-size:1.5rem;font-weight:800;color:var(--red-light);">3</div>
+          <div class="text-xs text-muted">Critical issues</div>
+        </div>
+        <div>
+          <div style="font-size:1.5rem;font-weight:800;color:var(--yellow-light);">4</div>
+          <div class="text-xs text-muted">Warnings</div>
+        </div>
+        <div>
+          <div style="font-size:1.5rem;font-weight:800;color:var(--green-light);">4</div>
+          <div class="text-xs text-muted">Passing</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk flags -->
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <h3 class="mb-4">Top 3 rejection risks</h3>
+      <div class="alert alert-red">
+        <span class="alert-icon">🔴</span>
+        <div>
+          <strong style="color:var(--red-light);">Missing leadership signal</strong>
+          <p class="text-sm mt-4">8 bullets screened. 0 show clear leadership attribution. McKinsey screeners filter heavily on this. Your current bullets show analytical skill but no "I led, drove, or directed."</p>
+        </div>
+      </div>
+      <div class="alert alert-red">
+        <span class="alert-icon">🔴</span>
+        <div>
+          <strong style="color:var(--red-light);">3 passive-voice bullets</strong>
+          <p class="text-sm mt-4">Bullets 2, 5, and 7 open with "Responsible for" or "Supported." These are immediate quality signals. Rewrite with strong verbs: Led, Drove, Architected, Reduced.</p>
+        </div>
+      </div>
+      <div class="alert alert-yellow">
+        <span class="alert-icon">⚠️</span>
+        <div>
+          <strong style="color:var(--yellow-light);">No firm tailoring detected</strong>
+          <p class="text-sm mt-4">BCG rewards creative, unconventional thinking signals. Bain rewards entrepreneurial drive. Your bullets are neutral — they don't flex toward any firm's identity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bullet-by-bullet -->
+  <div>
+    <div class="flex justify-between items-center mb-16">
+      <h3>Bullet-by-Bullet Scoring</h3>
+      <span class="text-sm text-muted">8 bullets reviewed</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Bullet (truncated)</th>
+            <th>Action Verb</th>
+            <th>Quantified</th>
+            <th>Leadership</th>
+            <th>Status</th>
+            <th>Feedback</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--text3);">B1</td>
+            <td style="max-width:220px;">"Led cross-functional team of 8 to redesign client onboarding…"</td>
+            <td><span class="badge badge-green">✓ Led</span></td>
+            <td><span class="badge badge-green">✓ $2.1M</span></td>
+            <td><span class="badge badge-green">✓ Clear</span></td>
+            <td><span class="badge badge-green">Pass</span></td>
+            <td class="text-sm" style="color:var(--text2);">Strong opener. Add firm-specific angle for BCG.</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text3);">B2</td>
+            <td style="max-width:220px;">"Responsible for client deliverables across 3 workstreams…"</td>
+            <td><span class="badge badge-red">✗ Passive</span></td>
+            <td><span class="badge badge-red">✗ None</span></td>
+            <td><span class="badge badge-red">✗ Absent</span></td>
+            <td><span class="badge badge-red">Critical</span></td>
+            <td class="text-sm" style="color:var(--text2);">A McKinsey screener stops here. Rewrite: "Managed 3 workstreams delivering X outcome by Y date."</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text3);">B3</td>
+            <td style="max-width:220px;">"Drove 23% reduction in operational cost by redesigning…"</td>
+            <td><span class="badge badge-green">✓ Drove</span></td>
+            <td><span class="badge badge-green">✓ 23%</span></td>
+            <td><span class="badge badge-yellow">Weak</span></td>
+            <td><span class="badge badge-yellow">Warning</span></td>
+            <td class="text-sm" style="color:var(--text2);">Good quantification. Unclear if you led the initiative or executed it. Add "as sole analyst" or "by leading team of X."</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text3);">B4</td>
+            <td style="max-width:220px;">"Analyzed 5-year market data to build competitive landscape…"</td>
+            <td><span class="badge badge-green">✓ Analyzed</span></td>
+            <td><span class="badge badge-yellow">Partial</span></td>
+            <td><span class="badge badge-red">✗ Absent</span></td>
+            <td><span class="badge badge-yellow">Warning</span></td>
+            <td class="text-sm" style="color:var(--text2);">Strong analytical signal but no outcome. Add "resulting in X recommendation that saved/earned $Y."</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text3);">B5</td>
+            <td style="max-width:220px;">"Supported senior team in preparing board presentation…"</td>
+            <td><span class="badge badge-red">✗ Supported</span></td>
+            <td><span class="badge badge-red">✗ None</span></td>
+            <td><span class="badge badge-red">✗ Absent</span></td>
+            <td><span class="badge badge-red">Critical</span></td>
+            <td class="text-sm" style="color:var(--text2);">"Supported" signals junior execution, not consulting candidate. What specifically did you own? Rewrite around your individual contribution.</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text3);">B6</td>
+            <td style="max-width:220px;">"Built financial model projecting 3-year EBITDA trajectory…"</td>
+            <td><span class="badge badge-green">✓ Built</span></td>
+            <td><span class="badge badge-green">✓ 3-year</span></td>
+            <td><span class="badge badge-yellow">Weak</span></td>
+            <td><span class="badge badge-green">Pass</span></td>
+            <td class="text-sm" style="color:var(--text2);">Good but incomplete. Did this model inform a decision? "…used by CFO to justify $12M capex decision" adds huge signal.</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text3);">B7</td>
+            <td style="max-width:220px;">"Worked with engineering to scope MVP requirements…"</td>
+            <td><span class="badge badge-red">✗ Worked with</span></td>
+            <td><span class="badge badge-red">✗ None</span></td>
+            <td><span class="badge badge-yellow">Implied</span></td>
+            <td><span class="badge badge-red">Critical</span></td>
+            <td class="text-sm" style="color:var(--text2);">Vague. This describes a meeting, not an achievement. Replace: "Defined MVP scope for 6-engineer team, cutting TTM by 6 weeks."</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text3);">B8</td>
+            <td style="max-width:220px;">"Launched go-to-market strategy across 3 regional markets…"</td>
+            <td><span class="badge badge-green">✓ Launched</span></td>
+            <td><span class="badge badge-green">✓ 3 markets</span></td>
+            <td><span class="badge badge-green">✓ Clear</span></td>
+            <td><span class="badge badge-green">Pass</span></td>
+            <td class="text-sm" style="color:var(--text2);">Strong. Add outcome metric: "generating $X in pipeline within Y months."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="alert alert-accent mt-32">
+    <span class="alert-icon">💡</span>
+    <div class="flex-1">
+      <strong style="color:var(--accent-light);">Fix these 3 issues and rescreen</strong>
+      <p class="text-sm mt-4" style="color:var(--text2);">Rewriting bullets B2, B5, and B7 alone is estimated to raise your survival score from 42% → 68%. After fixing, re-upload to confirm.</p>
+    </div>
+    <button class="btn btn-secondary btn-sm" style="flex-shrink:0;">Re-upload Resume</button>
+  </div>
+
+  <!-- Next: take diagnostic -->
+  <div class="card mt-16" style="display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <div>
+      <h3>Next: run your skill diagnostic</h3>
+      <p class="text-sm mt-4">Your resume gets you the interview. Now find out where you'll fail inside it.</p>
+    </div>
+    <a href="diagnostic.html" class="btn btn-primary" style="flex-shrink:0;">Take Diagnostic →</a>
+  </div>
+
+</main>
+</body>
+</html>

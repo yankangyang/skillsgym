@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Skill Drills</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index.html" class="logo">Prep<span>Gym</span></a>
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+    <a href="drills.html" class="nav-link active">Drills</a>
+    <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+  </div>
+  <div class="nav-right">
+    <a href="story-bank.html" class="btn btn-ghost btn-sm">Story Bank</a>
+    <div class="avatar">AK</div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="page-header">
+    <div>
+      <h1>Skill Drills</h1>
+      <p class="mt-4">Timed, scored, progressive difficulty. Start with your weakest category.</p>
+    </div>
+    <a href="results.html" class="btn btn-secondary btn-sm">View Diagnostic →</a>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="card mb-32" style="padding:20px 28px;">
+    <div class="grid-4" style="gap:0;">
+      <div style="text-align:center;border-right:1px solid var(--border);padding-right:16px;">
+        <div style="font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);">142</div>
+        <div class="stat-label">Total Drills Done</div>
+      </div>
+      <div style="text-align:center;border-right:1px solid var(--border);padding:0 16px;">
+        <div style="font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;color:var(--yellow-light);">🔥 14</div>
+        <div class="stat-label">Day Streak</div>
+      </div>
+      <div style="text-align:center;border-right:1px solid var(--border);padding:0 16px;">
+        <div style="font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;color:var(--green-light);">86%</div>
+        <div class="stat-label">Math Accuracy</div>
+      </div>
+      <div style="text-align:center;padding-left:16px;">
+        <div style="font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;color:var(--accent-light);">+1.8</div>
+        <div class="stat-label">Score Improvement</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category filter -->
+  <div class="tabs">
+    <button class="tab active">All Categories</button>
+    <button class="tab">⚡ Math</button>
+    <button class="tab">🏗 Structuring</button>
+    <button class="tab">📐 Sizing</button>
+    <button class="tab">🗣️ Behavioral</button>
+    <button class="tab">📊 Charts</button>
+    <button class="tab">💡 Brainstorming</button>
+  </div>
+
+  <!-- Priority banner -->
+  <div class="alert alert-red mb-24">
+    <span class="alert-icon">🎯</span>
+    <div class="flex-1">
+      <strong style="color:var(--red-light);">Your diagnostic says: drill Behavioral first (1.2/5)</strong>
+      <p class="text-sm mt-4" style="color:var(--text2);">You're in the bottom 12% nationally for behavioral responses. 15 min/day of PEI drills will move you more than any other category.</p>
+    </div>
+    <a href="behavioral.html" class="btn btn-danger btn-sm" style="flex-shrink:0;">Start Behavioral →</a>
+  </div>
+
+  <!-- Drill category cards -->
+  <div class="grid-3" style="gap:20px;">
+
+    <!-- Mental Math -->
+    <a href="math-drill.html" style="display:block;">
+      <div class="drill-card">
+        <div class="flex justify-between items-start">
+          <div class="drill-icon">⚡</div>
+          <span class="badge badge-green">3.0 / 5</span>
+        </div>
+        <div>
+          <h3>Mental Math</h3>
+          <p class="text-sm mt-4">Percentages, CAGR, break-even, margins, rule of 72. 30-second target per problem.</p>
+        </div>
+        <div class="progress-bar mt-4">
+          <div class="progress-fill green" style="width:65%;"></div>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-muted">52 / 80 problems done</span>
+          <span class="text-xs text-green">86% accuracy</span>
+        </div>
+        <div class="flex gap-8">
+          <span class="tag active">Percentages</span>
+          <span class="tag active">CAGR</span>
+          <span class="tag">Break-even</span>
+        </div>
+        <div class="btn btn-success btn-sm" style="text-align:center;">Continue → Problem 53</div>
+      </div>
+    </a>
+
+    <!-- Structuring -->
+    <a href="#" onclick="alert('Structuring drill — would open like math-drill.html')">
+      <div class="drill-card" style="border-color:rgba(245,158,11,0.3);">
+        <div class="flex justify-between items-start">
+          <div class="drill-icon">🏗️</div>
+          <span class="badge badge-yellow">2.1 / 5</span>
+        </div>
+        <div>
+          <h3>Structuring</h3>
+          <p class="text-sm mt-4">Case prompts, 90-second timer. Build MECE frameworks for profit decline, market entry, pricing, growth.</p>
+        </div>
+        <div class="progress-bar mt-4">
+          <div class="progress-fill yellow" style="width:38%;"></div>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-muted">30 / 80 prompts done</span>
+          <span class="text-xs text-yellow">Needs work</span>
+        </div>
+        <div class="flex gap-8">
+          <span class="tag active">Profit Decline</span>
+          <span class="tag">Market Entry</span>
+          <span class="tag">Pricing</span>
+        </div>
+        <div class="btn btn-secondary btn-sm" style="text-align:center;">Resume → Last: Profit Decline</div>
+      </div>
+    </a>
+
+    <!-- Market Sizing -->
+    <a href="#" onclick="alert('Market Sizing drill — would open like math-drill.html')">
+      <div class="drill-card">
+        <div class="flex justify-between items-start">
+          <div class="drill-icon">📐</div>
+          <span class="badge badge-green">3.8 / 5</span>
+        </div>
+        <div>
+          <h3>Market Sizing</h3>
+          <p class="text-sm mt-4">Estimation questions with scratchpad. Scored on decomposition, math, assumptions, and sanity check.</p>
+        </div>
+        <div class="progress-bar mt-4">
+          <div class="progress-fill green" style="width:45%;"></div>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-muted">18 / 40 questions done</span>
+          <span class="text-xs text-green">Strongest skill</span>
+        </div>
+        <div class="flex gap-8">
+          <span class="tag active">B2C</span>
+          <span class="tag">B2B</span>
+          <span class="tag">Infra</span>
+        </div>
+        <div class="btn btn-secondary btn-sm" style="text-align:center;">Continue → Next sizing</div>
+      </div>
+    </a>
+
+    <!-- Behavioral -->
+    <a href="behavioral.html" style="display:block;">
+      <div class="drill-card" style="border-color:rgba(239,68,68,0.4);background:rgba(239,68,68,0.03);">
+        <div class="flex justify-between items-start">
+          <div class="drill-icon">🗣️</div>
+          <div class="flex gap-6">
+            <span class="badge badge-red">1.2 / 5</span>
+            <span class="badge badge-red">Fix First</span>
+          </div>
+        </div>
+        <div>
+          <h3>Behavioral / PEI</h3>
+          <p class="text-sm mt-4">McKinsey PEI themes: personal impact, leadership, entrepreneurial drive. STAR rapid-fire with AI scoring.</p>
+        </div>
+        <div class="progress-bar mt-4">
+          <div class="progress-fill red" style="width:20%;"></div>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-muted">8 / 40 drills done</span>
+          <span class="text-xs text-red">Bottom 12% nationally</span>
+        </div>
+        <div class="flex gap-8">
+          <span class="tag active">McKinsey PEI</span>
+          <span class="tag">Bain Fit</span>
+          <span class="tag">BCG</span>
+        </div>
+        <div class="btn btn-danger btn-sm" style="text-align:center;">Start Now — Critical Gap</div>
+      </div>
+    </a>
+
+    <!-- Chart Interpretation -->
+    <a href="#" onclick="alert('Chart drill — would open like math-drill.html')">
+      <div class="drill-card">
+        <div class="flex justify-between items-start">
+          <div class="drill-icon">📊</div>
+          <span class="badge badge-yellow">2.8 / 5</span>
+        </div>
+        <div>
+          <h3>Chart Interpretation</h3>
+          <p class="text-sm mt-4">Extract the "so what" from data exhibits. Revenue waterfalls, scatter plots, market share charts.</p>
+        </div>
+        <div class="progress-bar mt-4">
+          <div class="progress-fill yellow" style="width:25%;"></div>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-muted">10 / 40 charts done</span>
+          <span class="text-xs text-yellow">Reads data, misses insight</span>
+        </div>
+        <div class="flex gap-8">
+          <span class="tag active">Waterfall</span>
+          <span class="tag">Scatter</span>
+          <span class="tag">Share</span>
+        </div>
+        <div class="btn btn-secondary btn-sm" style="text-align:center;">Continue Drills</div>
+      </div>
+    </a>
+
+    <!-- Brainstorming -->
+    <a href="#" onclick="alert('Brainstorming drill — would open like math-drill.html')">
+      <div class="drill-card">
+        <div class="flex justify-between items-start">
+          <div class="drill-icon">💡</div>
+          <span class="badge badge-gray">Not scored yet</span>
+        </div>
+        <div>
+          <h3>Brainstorming</h3>
+          <p class="text-sm mt-4">Generate structured, creative ideas under pressure. Revenue growth levers, cost reduction, new market entry.</p>
+        </div>
+        <div class="progress-bar mt-4">
+          <div class="progress-fill" style="width:8%;"></div>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-muted">3 / 40 prompts done</span>
+          <span class="text-xs text-muted">Just started</span>
+        </div>
+        <div class="flex gap-8">
+          <span class="tag">Revenue</span>
+          <span class="tag">Cost</span>
+          <span class="tag">New Markets</span>
+        </div>
+        <div class="btn btn-secondary btn-sm" style="text-align:center;">Start Brainstorming</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Daily drill suggestion -->
+  <div class="card mt-32 flex items-center justify-between gap-24">
+    <div>
+      <h3>📅 Today's suggested session — 20 min</h3>
+      <p class="text-sm mt-4">8 × Behavioral PEI drills → 5 × Structuring → 3 × Math. Based on your diagnostic priority list.</p>
+    </div>
+    <a href="behavioral.html" class="btn btn-primary" style="flex-shrink:0;">Start Today's Session →</a>
+  </div>
+
+</main>
+</body>
+</html>

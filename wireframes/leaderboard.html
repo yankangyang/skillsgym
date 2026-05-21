@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrepGym — Leaderboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index.html" class="logo">Prep<span>Gym</span></a>
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+    <a href="drills.html" class="nav-link">Drills</a>
+    <a href="leaderboard.html" class="nav-link active">Leaderboard</a>
+  </div>
+  <div class="nav-right">
+    <a href="story-bank.html" class="btn btn-ghost btn-sm">Story Bank</a>
+    <div class="avatar">AK</div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="page-header">
+    <div>
+      <h1>Leaderboard</h1>
+      <p class="mt-4">School vs. school · Cohort · Skill rankings · Weekly challenge</p>
+    </div>
+    <div class="flex items-center gap-12">
+      <span class="badge badge-accent" style="font-size:12px;">Consulting track</span>
+      <select class="input" style="width:auto;padding:8px 12px;font-size:13px;">
+        <option>Consulting</option>
+        <option>Private Equity</option>
+        <option>MMI Medical</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Your position banner -->
+  <div class="alert alert-accent mb-32" style="align-items:center;">
+    <span class="alert-icon">🏆</span>
+    <div class="flex-1">
+      <strong style="color:var(--accent-light);">Your current standing: #12 at Wharton · Top 87% in Math nationally</strong>
+      <p class="text-sm mt-4" style="color:var(--text2);">Your school (Wharton) is ranked <strong style="color:var(--text);">#3 nationally</strong> on overall consulting prep scores. Your weakest rank: behavioral (#291 nationally).</p>
+    </div>
+    <a href="behavioral.html" class="btn btn-secondary btn-sm" style="flex-shrink:0;">Improve your rank →</a>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active">School Rankings</button>
+    <button class="tab">My Cohort</button>
+    <button class="tab">Skill-Specific</button>
+    <button class="tab">Weekly Challenge</button>
+  </div>
+
+  <!-- SCHOOL RANKINGS TAB -->
+  <div id="school-tab">
+
+    <div class="flex justify-between items-center mb-16">
+      <div>
+        <h3>School Rankings — Overall Consulting Prep</h3>
+        <p class="text-sm mt-4 text-muted">Avg score across all 5 skill categories · 847 active users this week</p>
+      </div>
+      <div class="flex gap-8">
+        <button class="tab" style="padding:6px 12px;font-size:12px;border:1px solid var(--border);border-radius:6px;color:var(--text2);">All Time</button>
+        <button class="tab active" style="padding:6px 12px;font-size:12px;border:1px solid var(--accent);border-radius:6px;color:var(--accent-light);">This Month</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>School</th>
+            <th>Students</th>
+            <th>Math</th>
+            <th>Structuring</th>
+            <th>Behavioral</th>
+            <th>Overall</th>
+            <th>Trend</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge rank-1">1</span></td>
+            <td>Harvard Business School</td>
+            <td>124</td>
+            <td><span style="color:var(--green-light);font-weight:700;">3.9</span></td>
+            <td><span style="color:var(--green-light);font-weight:700;">3.7</span></td>
+            <td><span style="color:var(--green-light);font-weight:700;">3.5</span></td>
+            <td style="font-size:16px;font-weight:800;color:var(--green-light);">3.72</td>
+            <td><span class="text-green text-sm">↑ +0.2</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-2">2</span></td>
+            <td>Booth (Chicago)</td>
+            <td>98</td>
+            <td><span style="color:var(--green-light);font-weight:700;">4.1</span></td>
+            <td><span style="color:var(--text2);">3.4</span></td>
+            <td><span style="color:var(--text2);">3.2</span></td>
+            <td style="font-size:16px;font-weight:800;color:var(--text);">3.65</td>
+            <td><span class="text-green text-sm">↑ +0.1</span></td>
+          </tr>
+          <tr style="background:rgba(99,102,241,0.06);">
+            <td><span class="rank-badge rank-3">3</span></td>
+            <td><strong>Wharton ← You</strong></td>
+            <td>87</td>
+            <td><span style="color:var(--text2);">3.3</span></td>
+            <td><span style="color:var(--text2);">3.4</span></td>
+            <td><span style="color:var(--yellow-light);font-weight:700;">3.0</span></td>
+            <td style="font-size:16px;font-weight:800;color:var(--accent-light);">3.58</td>
+            <td><span class="text-yellow text-sm">↔ 0</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">4</span></td>
+            <td>Kellogg (Northwestern)</td>
+            <td>72</td>
+            <td><span style="color:var(--text2);">3.2</span></td>
+            <td><span style="color:var(--green-light);font-weight:700;">3.6</span></td>
+            <td><span style="color:var(--text2);">3.1</span></td>
+            <td style="font-size:16px;font-weight:800;color:var(--text);">3.52</td>
+            <td><span class="text-green text-sm">↑ +0.3</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">5</span></td>
+            <td>Stanford GSB</td>
+            <td>54</td>
+            <td><span style="color:var(--text2);">3.4</span></td>
+            <td><span style="color:var(--text2);">3.2</span></td>
+            <td><span style="color:var(--text2);">3.3</span></td>
+            <td style="font-size:16px;font-weight:800;color:var(--text);">3.48</td>
+            <td><span class="text-red text-sm">↓ -0.1</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">6</span></td>
+            <td>Sloan (MIT)</td>
+            <td>63</td>
+            <td><span style="color:var(--green-light);font-weight:700;">4.0</span></td>
+            <td><span style="color:var(--text2);">3.0</span></td>
+            <td><span style="color:var(--text2);">2.8</span></td>
+            <td style="font-size:16px;font-weight:800;color:var(--text);">3.44</td>
+            <td><span class="text-green text-sm">↑ +0.2</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">7</span></td>
+            <td>Tuck (Dartmouth)</td>
+            <td>41</td>
+            <td><span style="color:var(--text2);">3.1</span></td>
+            <td><span style="color:var(--text2);">3.3</span></td>
+            <td><span style="color:var(--text2);">3.0</span></td>
+            <td style="font-size:16px;font-weight:800;color:var(--text);">3.38</td>
+            <td><span class="text-red text-sm">↓ -0.2</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">8</span></td>
+            <td>Columbia Business School</td>
+            <td>55</td>
+            <td><span style="color:var(--text2);">3.0</span></td>
+            <td><span style="color:var(--text2);">3.1</span></td>
+            <td><span style="color:var(--text2);">3.2</span></td>
+            <td style="font-size:16px;font-weight:800;color:var(--text);">3.31</td>
+            <td><span class="text-green text-sm">↑ +0.1</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Insight strip -->
+    <div class="grid-3 mt-24" style="gap:16px;">
+      <div class="card card-sm text-center">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--green-light);">Booth</div>
+        <div class="text-xs text-muted mt-4">Best in Math (4.1 avg)</div>
+      </div>
+      <div class="card card-sm text-center">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--accent-light);">HBS</div>
+        <div class="text-xs text-muted mt-4">Best in Behavioral (3.5 avg)</div>
+      </div>
+      <div class="card card-sm text-center">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--yellow-light);">Kellogg</div>
+        <div class="text-xs text-muted mt-4">Fastest improver (+0.3)</div>
+      </div>
+    </div>
+
+    <!-- Weekly challenge call-out -->
+    <div class="card mt-24" style="border-color:rgba(245,158,11,0.4);background:rgba(245,158,11,0.04);">
+      <div class="flex justify-between items-start gap-24">
+        <div>
+          <div class="flex items-center gap-12 mb-12">
+            <span class="badge badge-yellow" style="font-size:13px;padding:5px 12px;">🏆 This Week's Challenge</span>
+            <span class="text-sm text-muted">Resets in 2d 14h 22m</span>
+          </div>
+          <h3 class="mb-8">Size the US EV charging market in 4 minutes</h3>
+          <p class="text-sm text-muted">Market sizing · 240-second target · All prep tracks eligible · 847 attempts so far</p>
+          <div class="flex gap-20 mt-16">
+            <div>
+              <div style="font-size:1.3rem;font-weight:800;color:var(--green-light);">3:12</div>
+              <div class="text-xs text-muted">Current leader</div>
+            </div>
+            <div>
+              <div style="font-size:1.3rem;font-weight:800;color:var(--text);">3:58</div>
+              <div class="text-xs text-muted">School average</div>
+            </div>
+            <div>
+              <div style="font-size:1.3rem;font-weight:800;color:var(--accent-light);">#23</div>
+              <div class="text-xs text-muted">Your rank</div>
+            </div>
+            <div>
+              <div style="font-size:1.3rem;font-weight:800;color:var(--yellow-light);">847</div>
+              <div class="text-xs text-muted">Total attempts</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex-shrink:0;text-align:center;">
+          <button class="btn btn-primary btn-lg mb-8" onclick="alert('Weekly challenge — would open like math-drill.html with 4-minute timer')">Accept Challenge →</button>
+          <p class="text-xs text-muted">Beat the leader. Share your rank.</p>
+          <div class="flex gap-6 justify-center mt-8">
+            <button class="btn btn-ghost btn-sm" style="font-size:12px;">Share result</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top 5 this week -->
+      <hr style="margin:20px 0;">
+      <h4 class="mb-12">Top 5 This Week</h4>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="flex items-center justify-between" style="padding:10px 14px;background:var(--surface2);border-radius:8px;">
+          <div class="flex items-center gap-12"><span class="rank-badge rank-1">1</span><span style="font-size:14px;font-weight:600;">Sarah M.</span><span class="text-xs text-muted">Booth</span></div>
+          <span style="font-weight:800;color:var(--green-light);">3:12</span>
+        </div>
+        <div class="flex items-center justify-between" style="padding:10px 14px;background:var(--surface2);border-radius:8px;">
+          <div class="flex items-center gap-12"><span class="rank-badge rank-2">2</span><span style="font-size:14px;font-weight:600;">James K.</span><span class="text-xs text-muted">HBS</span></div>
+          <span style="font-weight:800;color:var(--text);">3:28</span>
+        </div>
+        <div class="flex items-center justify-between" style="padding:10px 14px;background:var(--surface2);border-radius:8px;">
+          <div class="flex items-center gap-12"><span class="rank-badge rank-3">3</span><span style="font-size:14px;font-weight:600;">Priya R.</span><span class="text-xs text-muted">Kellogg</span></div>
+          <span style="font-weight:800;color:var(--text);">3:41</span>
+        </div>
+        <div class="flex items-center justify-between" style="padding:10px 14px;background:var(--surface2);border-radius:8px;">
+          <div class="flex items-center gap-12"><span class="rank-badge rank-other">4</span><span style="font-size:14px;font-weight:600;">Marcus T.</span><span class="text-xs text-muted">Wharton</span></div>
+          <span style="font-weight:800;color:var(--text);">3:55</span>
+        </div>
+        <div class="flex items-center justify-between" style="padding:10px 14px;background:var(--surface2);border-radius:8px;">
+          <div class="flex items-center gap-12"><span class="rank-badge rank-other">5</span><span style="font-size:14px;font-weight:600;">Lin W.</span><span class="text-xs text-muted">Stanford</span></div>
+          <span style="font-weight:800;color:var(--text);">4:02</span>
+        </div>
+        <!-- User's rank -->
+        <div class="flex items-center justify-between" style="padding:10px 14px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.25);border-radius:8px;">
+          <div class="flex items-center gap-12"><span class="rank-badge" style="background:rgba(99,102,241,0.2);color:var(--accent-light);">23</span><span style="font-size:14px;font-weight:600;color:var(--accent-light);">You (Alex K.)</span><span class="text-xs text-muted">Wharton</span></div>
+          <span style="font-weight:800;color:var(--accent-light);">4:31</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+</body>
+</html>
